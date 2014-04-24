@@ -7,7 +7,7 @@
 //
 
 #import "ZSViewController.h"
-#import "ZSMyScene.h"
+#import "ZSGameScene.h"
 
 @implementation ZSViewController
 
@@ -21,8 +21,9 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [ZSMyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [ZSGameScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.backgroundColor = [UIColor whiteColor];
     
     // Present the scene.
     [skView presentScene:scene];
@@ -30,7 +31,7 @@
 
 - (BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -46,6 +47,10 @@
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 @end

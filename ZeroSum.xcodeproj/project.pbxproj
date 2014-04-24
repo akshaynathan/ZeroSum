@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C70F06C190095340062A93B /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C70F06B190095340062A93B /* grid.png */; };
+		8C70F06F19009ABE0062A93B /* ZSTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C70F06E19009ABE0062A93B /* ZSTileNode.m */; };
+		8C70F0721900CF050062A93B /* ZSChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C70F0711900CF050062A93B /* ZSChain.m */; };
+		8CAA20631908EB6D00EB88A7 /* ZSNewTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA20621908EB6D00EB88A7 /* ZSNewTileNode.m */; };
+		8CAA20661908FA0400EB88A7 /* ZSLevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA20651908FA0400EB88A7 /* ZSLevelManager.m */; };
+		8CBDC4AD1901FF4100D46608 /* ZSUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBDC4AC1901FF4100D46608 /* ZSUtility.m */; };
 		8CF8741918EE3FF600E8473D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741818EE3FF600E8473D /* Foundation.framework */; };
 		8CF8741B18EE3FF600E8473D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741A18EE3FF600E8473D /* CoreGraphics.framework */; };
 		8CF8741D18EE3FF600E8473D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741C18EE3FF600E8473D /* UIKit.framework */; };
@@ -14,16 +20,15 @@
 		8CF8742518EE3FF600E8473D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CF8742318EE3FF600E8473D /* InfoPlist.strings */; };
 		8CF8742718EE3FF600E8473D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8742618EE3FF600E8473D /* main.m */; };
 		8CF8742B18EE3FF600E8473D /* ZSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8742A18EE3FF600E8473D /* ZSAppDelegate.m */; };
-		8CF8742E18EE3FF600E8473D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF8742C18EE3FF600E8473D /* Main.storyboard */; };
 		8CF8743118EE3FF600E8473D /* ZSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8743018EE3FF600E8473D /* ZSViewController.m */; };
-		8CF8743418EE3FF600E8473D /* ZSMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8743318EE3FF600E8473D /* ZSMyScene.m */; };
-		8CF8743618EE3FF600E8473D /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CF8743518EE3FF600E8473D /* Spaceship.png */; };
+		8CF8743418EE3FF600E8473D /* ZSGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8743318EE3FF600E8473D /* ZSGameScene.m */; };
 		8CF8743818EE3FF600E8473D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CF8743718EE3FF600E8473D /* Images.xcassets */; };
 		8CF8743F18EE3FF600E8473D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8743E18EE3FF600E8473D /* XCTest.framework */; };
 		8CF8744018EE3FF600E8473D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741818EE3FF600E8473D /* Foundation.framework */; };
 		8CF8744118EE3FF600E8473D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741C18EE3FF600E8473D /* UIKit.framework */; };
 		8CF8744918EE3FF600E8473D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CF8744718EE3FF600E8473D /* InfoPlist.strings */; };
 		8CF8744B18EE3FF600E8473D /* ZeroSumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8744A18EE3FF600E8473D /* ZeroSumTests.m */; };
+		8CF8745618EE422A00E8473D /* ZSBoardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8745518EE422A00E8473D /* ZSBoardNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C70F06B190095340062A93B /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grid.png; path = ../grid.png; sourceTree = "<group>"; };
+		8C70F06D19009ABE0062A93B /* ZSTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSTileNode.h; sourceTree = "<group>"; };
+		8C70F06E19009ABE0062A93B /* ZSTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileNode.m; sourceTree = "<group>"; };
+		8C70F0701900CF050062A93B /* ZSChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSChain.h; sourceTree = "<group>"; };
+		8C70F0711900CF050062A93B /* ZSChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSChain.m; sourceTree = "<group>"; };
+		8CAA20611908EB6D00EB88A7 /* ZSNewTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSNewTileNode.h; path = ../ZSNewTileNode.h; sourceTree = "<group>"; };
+		8CAA20621908EB6D00EB88A7 /* ZSNewTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSNewTileNode.m; path = ../ZSNewTileNode.m; sourceTree = "<group>"; };
+		8CAA20641908FA0400EB88A7 /* ZSLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSLevelManager.h; path = ../ZSLevelManager.h; sourceTree = "<group>"; };
+		8CAA20651908FA0400EB88A7 /* ZSLevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSLevelManager.m; path = ../ZSLevelManager.m; sourceTree = "<group>"; };
+		8CBDC4AB1901FF4100D46608 /* ZSUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSUtility.h; sourceTree = "<group>"; };
+		8CBDC4AC1901FF4100D46608 /* ZSUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSUtility.m; sourceTree = "<group>"; };
 		8CF8741518EE3FF600E8473D /* ZeroSum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeroSum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF8741818EE3FF600E8473D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8CF8741A18EE3FF600E8473D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,18 +64,18 @@
 		8CF8742818EE3FF600E8473D /* ZeroSum-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZeroSum-Prefix.pch"; sourceTree = "<group>"; };
 		8CF8742918EE3FF600E8473D /* ZSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSAppDelegate.h; sourceTree = "<group>"; };
 		8CF8742A18EE3FF600E8473D /* ZSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSAppDelegate.m; sourceTree = "<group>"; };
-		8CF8742D18EE3FF600E8473D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CF8742F18EE3FF600E8473D /* ZSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSViewController.h; sourceTree = "<group>"; };
 		8CF8743018EE3FF600E8473D /* ZSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSViewController.m; sourceTree = "<group>"; };
-		8CF8743218EE3FF600E8473D /* ZSMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSMyScene.h; sourceTree = "<group>"; };
-		8CF8743318EE3FF600E8473D /* ZSMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSMyScene.m; sourceTree = "<group>"; };
-		8CF8743518EE3FF600E8473D /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		8CF8743218EE3FF600E8473D /* ZSGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSGameScene.h; sourceTree = "<group>"; };
+		8CF8743318EE3FF600E8473D /* ZSGameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSGameScene.m; sourceTree = "<group>"; };
 		8CF8743718EE3FF600E8473D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8CF8743D18EE3FF600E8473D /* ZeroSumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeroSumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF8743E18EE3FF600E8473D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8CF8744618EE3FF600E8473D /* ZeroSumTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZeroSumTests-Info.plist"; sourceTree = "<group>"; };
 		8CF8744818EE3FF600E8473D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8CF8744A18EE3FF600E8473D /* ZeroSumTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZeroSumTests.m; sourceTree = "<group>"; };
+		8CF8745418EE422A00E8473D /* ZSBoardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSBoardNode.h; sourceTree = "<group>"; };
+		8CF8745518EE422A00E8473D /* ZSBoardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSBoardNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +106,7 @@
 		8CF8740C18EE3FF600E8473D = {
 			isa = PBXGroup;
 			children = (
+				8C70F06B190095340062A93B /* grid.png */,
 				8CF8742018EE3FF600E8473D /* ZeroSum */,
 				8CF8744418EE3FF600E8473D /* ZeroSumTests */,
 				8CF8741718EE3FF600E8473D /* Frameworks */,
@@ -123,12 +140,22 @@
 			children = (
 				8CF8742918EE3FF600E8473D /* ZSAppDelegate.h */,
 				8CF8742A18EE3FF600E8473D /* ZSAppDelegate.m */,
-				8CF8742C18EE3FF600E8473D /* Main.storyboard */,
 				8CF8742F18EE3FF600E8473D /* ZSViewController.h */,
 				8CF8743018EE3FF600E8473D /* ZSViewController.m */,
-				8CF8743218EE3FF600E8473D /* ZSMyScene.h */,
-				8CF8743318EE3FF600E8473D /* ZSMyScene.m */,
-				8CF8743518EE3FF600E8473D /* Spaceship.png */,
+				8CF8743218EE3FF600E8473D /* ZSGameScene.h */,
+				8CF8743318EE3FF600E8473D /* ZSGameScene.m */,
+				8CF8745418EE422A00E8473D /* ZSBoardNode.h */,
+				8CF8745518EE422A00E8473D /* ZSBoardNode.m */,
+				8C70F06D19009ABE0062A93B /* ZSTileNode.h */,
+				8C70F06E19009ABE0062A93B /* ZSTileNode.m */,
+				8CAA20611908EB6D00EB88A7 /* ZSNewTileNode.h */,
+				8CAA20621908EB6D00EB88A7 /* ZSNewTileNode.m */,
+				8CAA20641908FA0400EB88A7 /* ZSLevelManager.h */,
+				8CAA20651908FA0400EB88A7 /* ZSLevelManager.m */,
+				8C70F0701900CF050062A93B /* ZSChain.h */,
+				8C70F0711900CF050062A93B /* ZSChain.m */,
+				8CBDC4AB1901FF4100D46608 /* ZSUtility.h */,
+				8CBDC4AC1901FF4100D46608 /* ZSUtility.m */,
 				8CF8743718EE3FF600E8473D /* Images.xcassets */,
 				8CF8742118EE3FF600E8473D /* Supporting Files */,
 			);
@@ -242,9 +269,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CF8742518EE3FF600E8473D /* InfoPlist.strings in Resources */,
+				8C70F06C190095340062A93B /* grid.png in Resources */,
 				8CF8743818EE3FF600E8473D /* Images.xcassets in Resources */,
-				8CF8743618EE3FF600E8473D /* Spaceship.png in Resources */,
-				8CF8742E18EE3FF600E8473D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,9 +290,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CF8742718EE3FF600E8473D /* main.m in Sources */,
+				8CAA20661908FA0400EB88A7 /* ZSLevelManager.m in Sources */,
 				8CF8742B18EE3FF600E8473D /* ZSAppDelegate.m in Sources */,
 				8CF8743118EE3FF600E8473D /* ZSViewController.m in Sources */,
-				8CF8743418EE3FF600E8473D /* ZSMyScene.m in Sources */,
+				8CF8743418EE3FF600E8473D /* ZSGameScene.m in Sources */,
+				8C70F06F19009ABE0062A93B /* ZSTileNode.m in Sources */,
+				8CF8745618EE422A00E8473D /* ZSBoardNode.m in Sources */,
+				8CAA20631908EB6D00EB88A7 /* ZSNewTileNode.m in Sources */,
+				8C70F0721900CF050062A93B /* ZSChain.m in Sources */,
+				8CBDC4AD1901FF4100D46608 /* ZSUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,14 +327,6 @@
 				8CF8742418EE3FF600E8473D /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8CF8742C18EE3FF600E8473D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8CF8742D18EE3FF600E8473D /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		8CF8744718EE3FF600E8473D /* InfoPlist.strings */ = {
@@ -473,6 +497,7 @@
 				8CF8745018EE3FF600E8473D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CF8745118EE3FF600E8473D /* Build configuration list for PBXNativeTarget "ZeroSumTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +506,7 @@
 				8CF8745318EE3FF600E8473D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,7 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ZSBoardNode.h"
+#import "ZSUtility.h"
+#import "ZSChain.h"
+#import "ZSNewTileNode.h"
 
-@interface ZSMyScene : SKScene
+@interface ZSGameScene : SKScene
 
 @end
