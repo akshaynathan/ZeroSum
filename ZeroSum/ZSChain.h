@@ -11,20 +11,38 @@
 
 @interface ZSChain : NSObject
 
-// A stack to hold the running chain of tiles
-@property (atomic, readwrite) NSMutableArray* chain;
-
-// The current sum of the chain
+/**
+ *  Current sum of the chain.
+ */
 @property (atomic, readonly) int runningSum;
 
-// Create a new chain
+/**
+ *  Creates and returns a new chain.
+ *  Empty chains have sum = -1.
+ *
+ *  @return The constructed chain.
+ */
 -(ZSChain*)init;
 
-// Add a new tile to the chain
+/**
+ *  Adds a tile to the chain.
+ *
+ *  @param tile The tile to add.
+ */
 -(void)addTile:(ZSTileNode*)tile;
 
--(void)clearChain;
+/**
+ *  Stack order removes the last added tile.
+ *
+ *  @return The removed tile.
+ */
+-(ZSTileNode*)popTile;
 
--(int)removeChain;
+/**
+ *  Returns a reference to the last tile.
+ *
+ *  @return The last tile in the chain.
+ */
+-(ZSTileNode*)lastTile;
 
 @end

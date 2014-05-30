@@ -14,24 +14,46 @@
 @property (atomic, readwrite) int row, column;
 @property (atomic, readonly) int value;
 
-+(ZSTileNode*)nodeWithValue:(int)value inColumn:(int)col andRow:(int)row;
+/**
+ *  Returns a ZSTileNode with the given value.
+ *
+ *  @param value The integer value -9 - 9 of the tile.
+ *
+ *  @return The constructed ZSTileNode.
+ */
++(ZSTileNode*)nodeWithValue:(int)value;
 
-// Shifts the node down, runs move action with duration
--(void)shift:(int)num withDuration:(float)duration;
+/**
+ *  Add a connection to the other tile. Does nothing if the other
+ *  tile is not a neighbor.
+ *
+ *  @param next The tile to connect to.
+ */
+-(void)connectTo:(ZSTileNode*)next;
 
-// Returns true if this tile is neighbors with the other tile
--(BOOL)isNeighborsWith: (ZSTileNode*)other;
-
-// Returns whether this tile is connected (forward) already
--(BOOL)isConnected;
-
-// connects to the tile (by adding a connector)
--(void)connectTo: (ZSTileNode*)next;
-
-// Disconnects (removes connector) from forward tile
+/**
+ *  Disconnect the tile. Does not do anything if the tile is not
+ *  connected.
+ */
 -(void)disconnect;
 
-// Helper method to remove self from the board
--(void)removeSelf;
+/**
+ *  Check's if this tile neighbors the other tile.
+ *  Tiles can be horizontal or vertical neighbors.
+ *
+ *  @param other The other tile.
+ *
+ *  @return YES or NO depending on whether the tiles are neighbors.
+ */
+-(BOOL)isNeighborsWith:(ZSTileNode*)other;
+
+/**
+ *  Is the tile already in a chain? Note that this method will
+ *  only return YES for all but the last element in the chain,
+ *  which is not (forward) connected to any other tile.
+ *
+ *  @return YES if the tile is connected already, no otherwise.
+ */
+-(BOOL)isConnected;
 
 @end

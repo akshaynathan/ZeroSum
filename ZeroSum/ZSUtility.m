@@ -10,10 +10,6 @@
 
 @implementation ZSUtility
 
-+(void)debug:(NSString *)output from:(Class)source {
-    NSLog(@"%@: %@\n", NSStringFromClass(source), output);
-}
-
 +(int)randomValue {
     int value = arc4random_uniform(8) + 1;
     return (rand() % 2) == 1 ? 0 - value : value;

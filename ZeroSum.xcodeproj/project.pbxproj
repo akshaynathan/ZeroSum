@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C2EDE161908FFCD0018A158 /* ZSNewTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EDE151908FFCD0018A158 /* ZSNewTileNode.m */; };
-		8C2EDE191908FFE10018A158 /* ZSLevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2EDE181908FFE10018A158 /* ZSLevelManager.m */; };
+		8C6AB8C319358DD500530AC5 /* ZSTileNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */; };
+		8C6AB8C51935A73700530AC5 /* ZSChainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AB8C41935A73700530AC5 /* ZSChainTest.m */; };
 		8C70F06F19009ABE0062A93B /* ZSTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C70F06E19009ABE0062A93B /* ZSTileNode.m */; };
 		8C70F0721900CF050062A93B /* ZSChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C70F0711900CF050062A93B /* ZSChain.m */; };
+		8C7ED1D8192C3F5B00A22DD5 /* ZSBoardNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C7ED1D7192C3F5B00A22DD5 /* ZSBoardNodeTest.m */; };
 		8CBDC4AD1901FF4100D46608 /* ZSUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBDC4AC1901FF4100D46608 /* ZSUtility.m */; };
 		8CF8741918EE3FF600E8473D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741818EE3FF600E8473D /* Foundation.framework */; };
 		8CF8741B18EE3FF600E8473D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741A18EE3FF600E8473D /* CoreGraphics.framework */; };
@@ -26,7 +27,6 @@
 		8CF8744018EE3FF600E8473D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741818EE3FF600E8473D /* Foundation.framework */; };
 		8CF8744118EE3FF600E8473D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8741C18EE3FF600E8473D /* UIKit.framework */; };
 		8CF8744918EE3FF600E8473D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CF8744718EE3FF600E8473D /* InfoPlist.strings */; };
-		8CF8744B18EE3FF600E8473D /* ZeroSumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8744A18EE3FF600E8473D /* ZeroSumTests.m */; };
 		8CF8745618EE422A00E8473D /* ZSBoardNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF8745518EE422A00E8473D /* ZSBoardNode.m */; };
 /* End PBXBuildFile section */
 
@@ -41,14 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8C2EDE141908FFCD0018A158 /* ZSNewTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSNewTileNode.h; sourceTree = "<group>"; };
-		8C2EDE151908FFCD0018A158 /* ZSNewTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSNewTileNode.m; sourceTree = "<group>"; };
-		8C2EDE171908FFE10018A158 /* ZSLevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSLevelManager.h; sourceTree = "<group>"; };
-		8C2EDE181908FFE10018A158 /* ZSLevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSLevelManager.m; sourceTree = "<group>"; };
+		8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileNodeTest.m; sourceTree = "<group>"; };
+		8C6AB8C41935A73700530AC5 /* ZSChainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSChainTest.m; sourceTree = "<group>"; };
 		8C70F06D19009ABE0062A93B /* ZSTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSTileNode.h; sourceTree = "<group>"; };
 		8C70F06E19009ABE0062A93B /* ZSTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileNode.m; sourceTree = "<group>"; };
 		8C70F0701900CF050062A93B /* ZSChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSChain.h; sourceTree = "<group>"; };
 		8C70F0711900CF050062A93B /* ZSChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSChain.m; sourceTree = "<group>"; };
+		8C7ED1D7192C3F5B00A22DD5 /* ZSBoardNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSBoardNodeTest.m; sourceTree = "<group>"; };
 		8CBDC4AB1901FF4100D46608 /* ZSUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSUtility.h; sourceTree = "<group>"; };
 		8CBDC4AC1901FF4100D46608 /* ZSUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSUtility.m; sourceTree = "<group>"; };
 		8CF8741518EE3FF600E8473D /* ZeroSum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeroSum.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,7 +70,6 @@
 		8CF8743E18EE3FF600E8473D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8CF8744618EE3FF600E8473D /* ZeroSumTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZeroSumTests-Info.plist"; sourceTree = "<group>"; };
 		8CF8744818EE3FF600E8473D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8CF8744A18EE3FF600E8473D /* ZeroSumTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZeroSumTests.m; sourceTree = "<group>"; };
 		8CF8745418EE422A00E8473D /* ZSBoardNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSBoardNode.h; sourceTree = "<group>"; };
 		8CF8745518EE422A00E8473D /* ZSBoardNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSBoardNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,10 +143,6 @@
 				8CF8745518EE422A00E8473D /* ZSBoardNode.m */,
 				8C70F06D19009ABE0062A93B /* ZSTileNode.h */,
 				8C70F06E19009ABE0062A93B /* ZSTileNode.m */,
-				8C2EDE141908FFCD0018A158 /* ZSNewTileNode.h */,
-				8C2EDE151908FFCD0018A158 /* ZSNewTileNode.m */,
-				8C2EDE171908FFE10018A158 /* ZSLevelManager.h */,
-				8C2EDE181908FFE10018A158 /* ZSLevelManager.m */,
 				8C70F0701900CF050062A93B /* ZSChain.h */,
 				8C70F0711900CF050062A93B /* ZSChain.m */,
 				8CBDC4AB1901FF4100D46608 /* ZSUtility.h */,
@@ -173,7 +167,9 @@
 		8CF8744418EE3FF600E8473D /* ZeroSumTests */ = {
 			isa = PBXGroup;
 			children = (
-				8CF8744A18EE3FF600E8473D /* ZeroSumTests.m */,
+				8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */,
+				8C7ED1D7192C3F5B00A22DD5 /* ZSBoardNodeTest.m */,
+				8C6AB8C41935A73700530AC5 /* ZSChainTest.m */,
 				8CF8744518EE3FF600E8473D /* Supporting Files */,
 			);
 			path = ZeroSumTests;
@@ -285,8 +281,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C2EDE161908FFCD0018A158 /* ZSNewTileNode.m in Sources */,
-				8C2EDE191908FFE10018A158 /* ZSLevelManager.m in Sources */,
 				8CF8742718EE3FF600E8473D /* main.m in Sources */,
 				8CF8742B18EE3FF600E8473D /* ZSAppDelegate.m in Sources */,
 				8CF8743118EE3FF600E8473D /* ZSViewController.m in Sources */,
@@ -302,7 +296,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CF8744B18EE3FF600E8473D /* ZeroSumTests.m in Sources */,
+				8C6AB8C319358DD500530AC5 /* ZSTileNodeTest.m in Sources */,
+				8C6AB8C51935A73700530AC5 /* ZSChainTest.m in Sources */,
+				8C7ED1D8192C3F5B00A22DD5 /* ZSBoardNodeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

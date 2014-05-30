@@ -8,48 +8,44 @@
 
 #import "ZSChain.h"
 
-@implementation ZSChain
+@implementation ZSChain {
+    NSMutableArray *chain;
+}
 
 -(ZSChain*)init {
     self = [super init];
     
-    _chain = [[NSMutableArray alloc] init];
-    _runningSum = 0;
+    chain = [[NSMutableArray alloc] init];
+    _runningSum = -1;
     
     return self;
 }
 
 -(void)addTile:(ZSTileNode*)tile {
-    ZSTileNode* last = [_chain lastObject];
-    
-    if (last == nil // This is the first tile
-        || (last != tile // Make sure it is a new tile
-        && ![tile isConnected] // No cycles
-        && [tile isNeighborsWith:last]) // Only vertical and horizontal neighbors
-        ) {
-        
-        [_chain addObject:tile];
-        _runningSum = _runningSum + [tile value];
-        
-        [ZSUtility debug:[NSString stringWithFormat:@"Chain sum: %d", _runningSum]
-                    from:[self class]];
-        [last connectTo: tile];
-    }
-}
-
--(void) clearChain {
-    for(ZSTileNode* t in _chain) {
-        [t disconnect];
+    if(_runningSum == -1) {
+        _runningSum = 0; // Chain with tiles
     }
     
-    _chain = [[NSMutableArray alloc] init];
-    _runningSum = 0;
+    [chain addObject:tile];
+    _runningSum += tile.value;
 }
 
--(int) removeChain {
-    for (ZSTileNode *h in _chain)
-        [h removeSelf];
-    _chain = [[NSMutableArray alloc] init];
-    return 500;
+-(ZSTileNode*)lastTile {
+    return [chain lastObject];
 }
+
+-(ZSTileNode*)popTile {
+    if(_runningSum == -1)
+        return nil; // Empty chain
+    
+    ZSTileNode* ret = [chain lastObject];
+    [chain removeLastObject];
+    _runningSum += -1 * ret.value;
+    
+    if([chain count] == 0) {
+        _runningSum = -1;
+    }
+    return ret;
+}
+
 @end

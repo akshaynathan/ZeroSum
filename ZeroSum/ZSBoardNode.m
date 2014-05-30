@@ -7,6 +7,7 @@
 //
 
 #import "ZSBoardNode.h"
+#import "ZSUtility.h"
 
 @implementation ZSBoardNode {
     NSMutableArray *tiles; // 2d array of tiles
@@ -23,48 +24,42 @@
     
     // Initialize 2D array of tiles
     tiles = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < BOARD_COLUMNS; i++)
         [tiles addObject:[[NSMutableArray alloc] init]];
     
     return self;
 }
 
--(void)draw {
-    // Draw Board (to be replaced with image)
-    int base_y = 45 - (568/2), top_y = base_y + (40 * 12);
-    int border_l = -160;
-    
-    // Draw the horizontal borders
-    CGMutablePathRef p = CGPathCreateMutable();
-    CGPathMoveToPoint(p, NULL, -160, base_y);
-    CGPathAddLineToPoint(p, NULL, 160, base_y);
-    CGPathMoveToPoint(p, NULL, -160, top_y);
-    CGPathAddLineToPoint(p, NULL, 160, top_y);
-    
-    // Draw the grid
-    for (int i = 1; i < 8; i++) {
-        CGPathMoveToPoint(p, NULL, border_l + (i * 40), base_y);
-        CGPathAddLineToPoint(p, NULL, border_l + (i * 40), top_y);
-    }
-    
-    SKShapeNode *grid = [SKShapeNode node];
-    grid.path = p;
-    grid.strokeColor = [UIColor blackColor];
-    grid.antialiased = NO;
-    grid.lineWidth = 0.5f;
-    [self addChild:grid];
-}
-
-
+/*
+ Adds num tiles to each column
+ */
 -(void)initTiles:(int)num {
-    for(int i = 0; i < 8; i++) {
+    for(int i = 0; i < BOARD_COLUMNS; i++) {
         for(int k = 0; k < num; k++) {
-            ZSTileNode *p = [ZSTileNode nodeWithValue:[ZSUtility randomValue]
-                                             inColumn:i andRow:k];
-            [self addChild:p];
-            [[tiles objectAtIndex:i] addObject:p];
+            ZSTileNode *p = [ZSTileNode nodeWithValue:[ZSUtility randomValue]];
+            [self addTile:p atColumn:i andRow:k];
         }
     }
+}
+
+-(ZSTileNode*)addTile:(ZSTileNode *)tile atColumn:(int)col andRow:(int)row {
+    NSMutableArray *column = [tiles objectAtIndex:col];
+    
+    // Sanity checks
+    if([column count] < row || column == nil ||
+       row >= BOARD_ROWS || row < 0) {
+        return nil;
+    }
+    
+    // Insert the tile into the grid
+    [column insertObject:tile atIndex:row];
+    
+    // Insert the tile onto the actual board
+    //[tile setColumn:col andRow:row];
+    [self addChild:tile];
+    
+    // Shift up the other tiles
+    return nil;
 }
 
 -(void)removeTileAtColumn:(int)col andRow:(int)row {
@@ -79,7 +74,7 @@
     int size = (int)[column count];
     for (int i = row; i < size; i++) {
         ZSTileNode *node = [column objectAtIndex:i];
-        [node shift:-1 withDuration:0.5f];
+        //[node shift:-1 withDuration:0.5f];
     }
 }
 
@@ -94,23 +89,59 @@
     int size = (int)[column count];
     for (int i = row + 1; i < size; i++) {
         ZSTileNode *node = [column objectAtIndex:i];
-        [node shift:1 withDuration:0.5f];
+        //[node shift:1 withDuration:0.5f];
     }
 }
 
-// Prints the tiles array to stdout
+/**
+ *  Draws the board
+ */
+// TODO: Replace the manual drawing with a sprite.
+-(void)draw {
+    // Draw Board (to be replaced with image)
+    int base_y = BOTTOM_BUFFER - (TILE_SIZE * BOARD_ROWS/2);
+    int top_y = base_y + (TILE_SIZE * BOARD_ROWS);
+    int border_l = -(TILE_SIZE * BOARD_COLUMNS/2);
+    
+    // Draw the horizontal borders
+    CGMutablePathRef p = CGPathCreateMutable();
+    CGPathMoveToPoint(p, NULL, border_l, base_y);
+    CGPathAddLineToPoint(p, NULL, -border_l, base_y);
+    CGPathMoveToPoint(p, NULL, border_l, top_y);
+    CGPathAddLineToPoint(p, NULL, -border_l, top_y);
+    
+    // Draw the grid
+    for (int i = 1; i < 8; i++) {
+        CGPathMoveToPoint(p, NULL, border_l + (i * TILE_SIZE), base_y);
+        CGPathAddLineToPoint(p, NULL, border_l + (i * TILE_SIZE), top_y);
+    }
+    
+    SKShapeNode *grid = [SKShapeNode node];
+    grid.path = p;
+    grid.strokeColor = [UIColor blackColor];
+    grid.antialiased = NO;
+    grid.lineWidth = 0.5f;
+    [self addChild:grid];
+}
+
+/**
+ *  Prints the 2d array contents (tiles by value) to stdout.
+ */
 -(void)printArray {
-    for (int i = 11; i >= 0; i--) {
-        for (int k = 0; k < 8; k++) {
+    for (int i = BOARD_ROWS; i > 1; i--) {
+        for (int k = 0; k < BOARD_COLUMNS; k++) {
             NSMutableArray *p = [tiles objectAtIndex:k];
-            if (i > [p count] - 1) {
-                printf("--");
-            } else {
-                printf("%2d", [(ZSTileNode*)[p objectAtIndex:i] value]);
-            }
             
+            // Above highest tile
+            if (i > [p count] - 1)
+                printf("--");
+            else
+                printf("%2d", [(ZSTileNode*)[p objectAtIndex:i] value]);
+            
+            // Column Separator
             printf(" ");
         }
+        // Row Separator
         printf("\n");
     }
 }

@@ -17,8 +17,6 @@
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
     
     // Create and configure the scene.
     SKScene * scene = [ZSGameScene sceneWithSize:skView.bounds.size];
@@ -29,6 +27,7 @@
     [skView presentScene:scene];
 }
 
+// The game is only played in landscape mode
 - (BOOL)shouldAutorotate
 {
     return NO;
@@ -36,19 +35,16 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
-        return UIInterfaceOrientationMaskAll;
-    }
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+    NSLog(@"Memory Warning! This shouldn't happen.");
 }
 
+// Hide the status bar
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }

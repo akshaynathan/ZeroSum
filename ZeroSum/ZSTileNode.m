@@ -7,54 +7,56 @@
 //
 
 #import "ZSTileNode.h"
+#import "ZSUtility.h"
+
+#define SQUARE_SIZE (TILE_SIZE - 4)
 
 @implementation ZSTileNode {
-    SKShapeNode *connector;
+    SKNode *connector;
 }
 
--(void)shift:(int)num withDuration:(float)duration {
-    _row = _row + num;
-    [self runAction:[SKAction moveByX:0 y:num * 40 duration:duration]];
++(ZSTileNode*)nodeWithValue:(int)value {
+    ZSTileNode *ret = [[ZSTileNode alloc] initWithValue:value];
+    [ret draw];
+    return ret;
 }
 
-+(ZSTileNode*)nodeWithValue:(int)value inColumn:(int)col andRow:(int)row {
-    return [[ZSTileNode alloc] initWithValue:value inColumn:col andRow:row];
-}
-
--(ZSTileNode*)initWithValue:(int)value inColumn:(int)col andRow:(int)row {
-    self = [[ZSTileNode alloc] init];
-    _value = value; _row = row; _column = col;
-    self.position = CGPointMake(-160 + _column * 40 + 1,
-                                -240 + _row * 40 + 2);
-    [self draw];
+/**
+ *  Init helper for setting the value.
+ *
+ *  @param value The tiles value.
+ *
+ *  @return Returns the constructed tile.
+ */
+-(ZSTileNode*)initWithValue:(int)value {
+    self = [super init];
+    _value = value;
     return self;
 }
 
--(void)draw {
-    SKShapeNode* s = [SKShapeNode node];
-    s.path = CGPathCreateWithRect(CGRectMake(0, 0, 36, 36), NULL);
-    s.position = CGPointMake(1, 1);
-    s.strokeColor = _value < 0 ? [UIColor redColor] : [UIColor cyanColor];
-    
-    SKLabelNode* l = [SKLabelNode node];
-    l.text = [NSString stringWithFormat:@"%d", abs(_value)];
-    l.fontSize = 24;
-    l.position = CGPointMake(18, 8);
-    l.fontColor = [UIColor blackColor];
-    [s addChild:l];
-    
-    [self addChild:s];
-}
 
--(void)connectTo:(ZSTileNode *)next {
-    connector = [SKShapeNode node];
+-(void)connectTo:(ZSTileNode*)next {
+    // Check if the next node is a neighbor.
+    if([self isNeighborsWith:next] == NO) {
+        DEBUG_LOG(@"Cannot connect non-neighboring nodes.");
+        return;
+    }
+    
+    // TODO: Replace connector with sprite.
+    SKShapeNode* conn = [SKShapeNode node];
     
     CGMutablePathRef k = CGPathCreateMutable();
-    CGPathMoveToPoint(k, NULL, self.position.x + 18, self.position.y + 18);
-    CGPathAddLineToPoint(k, NULL, next.position.x + 18, next.position.y + 18);
-    connector.path = k;
-    connector.strokeColor = [UIColor yellowColor];
-    connector.lineWidth = 1;
+    CGPathMoveToPoint(k, NULL,
+                      self.position.x + SQUARE_SIZE / 2,
+                      self.position.y + SQUARE_SIZE / 2);
+    CGPathAddLineToPoint(k, NULL,
+                         next.position.x + SQUARE_SIZE / 2,
+                         next.position.y + SQUARE_SIZE / 2);
+    conn.path = k;
+    conn.strokeColor = [UIColor yellowColor];
+    conn.lineWidth = 1;
+    
+    connector = conn; // Set this node to connected.
     
     [self.parent addChild:connector];
 }
@@ -71,14 +73,32 @@
 }
 
 -(void)disconnect {
-    [connector removeFromParent];
-    connector = NULL;
+    if(connector != nil) {
+        [connector removeFromParent];
+        connector = nil;
+    } else {
+        DEBUG_LOG(@"Cannot disconnect unconnected node.");
+    }
 }
 
--(void)removeSelf {
-    ZSBoardNode *board = (ZSBoardNode*)[self parent];
-    [board removeTileAtColumn:self.column andRow:self.row];
-    [self disconnect];
+/**
+ *  Draws the actual tile.
+ */
+// TODO: Replace with sprite.
+-(void)draw {
+    SKShapeNode* s = [SKShapeNode node];
+    s.path = CGPathCreateWithRect(CGRectMake(0, 0, SQUARE_SIZE, SQUARE_SIZE), NULL);
+    s.position = CGPointMake(1, 1);
+    s.strokeColor = _value < 0 ? [UIColor redColor] : [UIColor cyanColor];
+    
+    SKLabelNode* l = [SKLabelNode node];
+    l.text = [NSString stringWithFormat:@"%d", abs(_value)];
+    l.fontSize = SQUARE_SIZE / 2;
+    l.position = CGPointMake(SQUARE_SIZE / 2, SQUARE_SIZE / 4);
+    l.fontColor = [UIColor blackColor];
+    [s addChild:l];
+    
+    [self addChild:s];
 }
 
 

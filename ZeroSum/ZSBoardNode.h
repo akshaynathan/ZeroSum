@@ -15,20 +15,55 @@
 
 #define STARTING_TILES 5
 
-// Returns a board node
+/**
+ *  Builds a board node.
+ *
+ *  @return The constructed ZSBoardNode.
+ */
 +(ZSBoardNode*)node;
 
-// Override init
--(id)init;
-
-// Adds a tile at a column (shifts other tiles up)
--(void)addTileAtColumn:(ZSTileNode*)n atCol:(int)col andRow:(int)row;
-
-// Removes a tile, and shifts other tiles down
--(void)removeTileAtColumn:(int)col andRow:(int)row;
-
-// Add num tiles to each row
+/**
+ *  Adds initial tiles.
+ *
+ *  @param num The number of initial tiles to add per row.
+ */
 -(void)initTiles:(int)num;
+
+/**
+ *  Returns the tile at the given position or nil if no such tile exists.
+ *
+ *  @param col Column position.
+ *  @param row Row position.
+ *
+ *  @return The ZSTileNode at the position.
+ */
+-(ZSTileNode*)tileAtColumn:(int)col andRow:(int)row;
+
+/**
+ *  Adds a tile to the given position. Returns the added tile, or nil
+ *  if the tile cannot be added (it is not contiguous with existing tiles
+ *  or off the board. Shifts higher tiles up.
+ *
+ *  @param tile The ZSTileNode to be added.
+ *  @param col  Column position.
+ *  @param row  Row position.
+ *
+ *  @return The added ZSTileNode or nil if it could not be added.
+ */
+-(ZSTileNode*)addTile:(ZSTileNode*)tile atColumn:(int)col andRow:(int)row;
+
+/**
+ *  Removes a tile at the given position. Returns removed tile, or nil
+ *  if the tile cannot be removed. Shifts higher tiles down.
+ *
+ *  @param col Column position.
+ *  @param row Row position.
+ *
+ *  @return The removed ZSTileNode or nil if the tile cannot be removed.
+ */
+-(ZSTileNode*)removeTileAtColumn:(int)col andRow:(int)row;
+
+
 
 
 @end
