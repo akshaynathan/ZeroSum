@@ -23,9 +23,6 @@
         // Create the board
         [self addChild:[self createBoard]];
         
-        
-        // Initialize an empty chain instance
-        chain = [[ZSChain alloc] init];
     }
     return self;
 }
@@ -40,9 +37,6 @@
     b.position = CGPointMake(SCREEN_WIDTH/2,
                                  TILE_SIZE * BOARD_ROWS/2
                                  + BOTTOM_BUFFER); // Save space at bottom
-    
-    // Add the starting tiles
-    //[b initTiles:STARTING_TILES];
     return b;
 }
 
