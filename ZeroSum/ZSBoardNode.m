@@ -30,67 +30,110 @@
     return self;
 }
 
-/*
- Adds num tiles to each column
+/**
+ *  Get the actual position of the Tile relative to board dimensions.
+ *
+ *  @param tile The tile to set position of.
  */
--(void)initTiles:(int)num {
-    for(int i = 0; i < BOARD_COLUMNS; i++) {
-        for(int k = 0; k < num; k++) {
-            ZSTileNode *p = [ZSTileNode nodeWithValue:[ZSUtility randomValue]];
-            [self addTile:p atColumn:i andRow:k];
-        }
-    }
+-(CGPoint)getPositionForTile:(ZSTileNode*)tile {
+    return CGPointMake(tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE)/2,
+                                  tile.row * TILE_SIZE - (BOARD_ROWS * TILE_SIZE)/2);
+}
+
+/**
+ *  Adds an action to shift the given tile (vertically).
+ *
+ *  @param shift The number of rows to shift the tile.
+ *  @param tile  The tile to shift.
+ */
+-(void)addShift:(int)shift forTile:(ZSTileNode*)tile {
+    CGPoint newpos = [self getPositionForTile:tile];
+    
+    // This is for testing
+    NSString *key = [NSString stringWithFormat:@"moveTo(%d, %d)", (int)newpos.x, (int)newpos.y];
+    
+    SKAction *action = [SKAction moveTo:newpos
+                               duration:(shift > 0 ? UPWARD_SHIFT_DURATION : DOWNWARD_SHIFT_DURATION)];
+    
+    [tile runAction:action
+            withKey:key];
 }
 
 -(ZSTileNode*)addTile:(ZSTileNode *)tile atColumn:(int)col andRow:(int)row {
-    NSMutableArray *column = [tiles objectAtIndex:col];
-    
     // Sanity checks
-    if([column count] < row || column == nil ||
-       row >= BOARD_ROWS || row < 0) {
+    if((row >= BOARD_ROWS || row < 0) ||
+       (col >= BOARD_COLUMNS || col < 0)) {
         return nil;
     }
     
+    NSMutableArray *column_array = [tiles objectAtIndex:col];
+    
+    // Set the tile position
+    tile.row = (int)MIN([column_array count], row); // Tile falls down
+    tile.column = col;
+    [tile setPosition:[self getPositionForTile:tile]];
+    
     // Insert the tile into the grid
-    [column insertObject:tile atIndex:row];
+    [column_array insertObject:tile atIndex:tile.row];
+    
+    // Shift up the other tile
+    int i = tile.row + 1;
+    while(i < [column_array count]) {
+        ZSTileNode *neighbor = [column_array objectAtIndex:i];
+        neighbor.row++; // Increment row
+
+        [self addShift:1 forTile:neighbor]; // Shift the tile
+
+        i++;
+    }
     
     // Insert the tile onto the actual board
-    //[tile setColumn:col andRow:row];
     [self addChild:tile];
+    return tile;
+}
+
+
+-(ZSTileNode*)removeTileAtColumn:(int)col andRow:(int)row {
+    // Sanity checks
+    if((row >= BOARD_ROWS || row < 0) ||
+       (col >= BOARD_COLUMNS || col < 0)) {
+        return nil;
+    }
     
-    // Shift up the other tiles
-    return nil;
-}
-
--(void)removeTileAtColumn:(int)col andRow:(int)row {
-    NSMutableArray *column = [tiles objectAtIndex:col];
-    [column removeObjectAtIndex:row];
-    ZSTileNode *n = [column objectAtIndex:row];
+    NSMutableArray *column_array = [tiles objectAtIndex:col];
+    if(row >= [column_array count])
+        return nil;
+    
+    ZSTileNode *n = [column_array objectAtIndex:row];
+    
+    // Remove the object from the grid
+    [column_array removeObjectAtIndex:row];
+    
+    // Delete the tile from the board
     [n removeFromParent];
-    [self shiftDownColumn:column atRow:row];
-}
-
--(void)shiftDownColumn:(NSMutableArray*)column atRow:(int)row {
-    int size = (int)[column count];
-    for (int i = row; i < size; i++) {
-        ZSTileNode *node = [column objectAtIndex:i];
-        //[node shift:-1 withDuration:0.5f];
+    
+    // Shift down the other tiles
+    int i = n.row; // Start at the new occupant
+    while(i < [column_array count]) {
+        ZSTileNode *neighbor = [column_array objectAtIndex:i];
+        neighbor.row--; // Increment row
+        [neighbor runAction:[SKAction moveByX:0
+                                            y:-TILE_SIZE
+                                     duration:DOWNWARD_SHIFT_DURATION]];
+        i++;
     }
+    return n;
 }
 
--(void)addTileAtColumn:(ZSTileNode*)tile atCol:(int)col andRow:(int)row {
-    NSMutableArray *column = [tiles objectAtIndex:col];
-    [column insertObject:tile atIndex:row];
-    [self addChild:tile];
-    [self shiftUpColumn:column atRow:row];
-}
-
--(void)shiftUpColumn:(NSMutableArray*)column atRow:(int)row {
-    int size = (int)[column count];
-    for (int i = row + 1; i < size; i++) {
-        ZSTileNode *node = [column objectAtIndex:i];
-        //[node shift:1 withDuration:0.5f];
+-(ZSTileNode*)tileAtColumn:(int)col andRow:(int)row {
+    // Sanity checks
+    if((row >= BOARD_ROWS || row < 0) ||
+       (col >= BOARD_COLUMNS || col < 0)) {
+        return nil;
     }
+    
+    NSMutableArray *column_array = [tiles objectAtIndex:col];
+    return [column_array objectAtIndex:row];
 }
 
 /**

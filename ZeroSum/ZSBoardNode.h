@@ -13,21 +13,12 @@
 
 @interface ZSBoardNode : SKSpriteNode
 
-#define STARTING_TILES 5
-
 /**
  *  Builds a board node.
  *
  *  @return The constructed ZSBoardNode.
  */
 +(ZSBoardNode*)node;
-
-/**
- *  Adds initial tiles.
- *
- *  @param num The number of initial tiles to add per row.
- */
--(void)initTiles:(int)num;
 
 /**
  *  Returns the tile at the given position or nil if no such tile exists.

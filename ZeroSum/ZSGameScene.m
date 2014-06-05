@@ -42,7 +42,7 @@
                                  + BOTTOM_BUFFER); // Save space at bottom
     
     // Add the starting tiles
-    [b initTiles:STARTING_TILES];
+    //[b initTiles:STARTING_TILES];
     return b;
 }
 
