@@ -19,6 +19,9 @@
 
 #define BOTTOM_BUFFER 44
 
+#define SQUARE_SIZE (TILE_SIZE - 4)
+
+
 // Animation
 #define UPWARD_SHIFT_DURATION 0.3
 #define DOWNWARD_SHIFT_DURATION 0.5

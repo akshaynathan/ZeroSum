@@ -9,8 +9,6 @@
 #import "ZSTileNode.h"
 #import "ZSUtility.h"
 
-#define SQUARE_SIZE (TILE_SIZE - 4)
-
 @implementation ZSTileNode {
     SKNode *connector;
 }

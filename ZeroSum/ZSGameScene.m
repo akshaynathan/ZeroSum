@@ -7,6 +7,7 @@
 //
 
 #import "ZSGameScene.h"
+#import "ZSNewTileNode.h"
 
 @class ZSTileNode;
 
@@ -21,8 +22,10 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         // Create the board
-        [self addChild:[self createBoard]];
-        
+        //[self addChild:[self createBoard]];
+        ZSNewTileNode* k = [ZSNewTileNode nodeWithValue:4];
+        k.position = CGPointMake(50, 50);
+        [self addChild:k];
     }
     return self;
 }
