@@ -7,9 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "ZSTileNode.h"
 
 @class ZSTileNode;
+@class ZSNewTileNode;
 
 @interface ZSBoardNode : SKSpriteNode
 
@@ -54,7 +54,34 @@
  */
 -(ZSTileNode*)removeTileAtColumn:(int)col andRow:(int)row;
 
+/**
+ *  Adds a NewTile in the column. If there is already a NewTile here,
+ *  the method will return nil.
+ *
+ *  @param col The column to add the tile in.
+ *
+ *  @return The ZSNewTileNode if it is successfully added.
+ */
+-(ZSNewTileNode*)addNewTile:(ZSNewTileNode*)tile atColumn:(int)col;
 
+/**
+ *  Gets the ZSNewTileNode in the column. If there is nothing there,
+ *  the method will return nil.
+ *
+ *  @param col The column to look in.
+ *
+ *  @return The ZSNewTileNode in the column.
+ */
+-(ZSNewTileNode*)newTileAtColumn:(int)col;
+
+/**
+ *  Removes the ZSNewTileNode from the column.
+ *
+ *  @param col The column.
+ *
+ *  @return The past NewTile or nil if there was nothing there.
+ */
+-(ZSNewTileNode*)removeNewTileAtColumn:(int)col;
 
 
 @end

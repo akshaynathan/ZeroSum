@@ -47,62 +47,21 @@
  * Manages new touch events
  */
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint pos = [touch locationInNode:self];
-    NSArray *nodes = [self nodesAtPoint:pos];
-    
-    for (SKNode *n in nodes) {
-        // Tile Node
-        if ([n.name isEqualToString:@"tile"]) {
-            // Add the node to the chain
-            [chain addTile:(ZSTileNode*) n];
-        }
-    }
+
 }
 
 /**
  * Manages touch move events
  */
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint pos = [touch locationInNode:self];
-    NSArray *nodes = [self nodesAtPoint:pos];
-    
-    for (SKNode *n in nodes) {
-        // Tile Node
-        if ([n.name isEqualToString:@"tile"]) {
-            // Add the node to the chain
-            [chain addTile:(ZSTileNode*) n];
-        }
-    }
+
 }
 
 /**
  * Manages touch end events
  */
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint pos = [touch locationInNode:self];
-    NSArray *nodes = [self nodesAtPoint:pos];
-    
-    for (SKNode *n in nodes) {
-        // Tile Node
-        if ([n.name isEqualToString:@"tile"]) {
-            // Add the node to the chain
-            [chain addTile:(ZSTileNode*) n];
-            
-            // Remove the chain if it sums to 0
-            //if (chain.runningSum == 0)
-                //[chain removeChain];
-            //else
-               // [chain clearChain];
-        }
-        
-        // New Tile
-        if ([n.name isEqualToString:@"ntile"]) {
-            // Push this tile onto the board
-        }
-    }
+
 }
 
 -(void)update:(CFTimeInterval)currentTime {

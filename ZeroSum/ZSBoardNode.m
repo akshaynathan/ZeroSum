@@ -8,9 +8,13 @@
 
 #import "ZSBoardNode.h"
 #import "ZSUtility.h"
+#import "ZSTileNode.h"
+#import "ZSNewTileNode.h"
+
 
 @implementation ZSBoardNode {
     NSMutableArray *tiles; // 2d array of tiles
+    id new_tiles[8]; // Array of newTiles
 }
 
 +(ZSBoardNode*)node {
@@ -22,11 +26,13 @@
 -(id)init {
     self = [super init];
     
-    // Initialize 2D array of tiles
+    // Initialize arrays
     tiles = [[NSMutableArray alloc] init];
-    for (int i = 0; i < BOARD_COLUMNS; i++)
+    for (int i = 0; i < BOARD_COLUMNS; i++) {
         [tiles addObject:[[NSMutableArray alloc] init]];
-    
+        new_tiles[i] = nil;
+    }
+
     return self;
 }
 
@@ -38,6 +44,16 @@
 -(CGPoint)getPositionForTile:(ZSTileNode*)tile {
     return CGPointMake(tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE)/2,
                                   tile.row * TILE_SIZE - (BOARD_ROWS * TILE_SIZE)/2);
+}
+
+/**
+ *  Get the actual position of the NewTile relative to board dimensions.
+ *
+ *  @param tile The tile to set position of.
+ */
+-(CGPoint)getPositionForNewTile:(ZSNewTileNode*)tile {
+    return CGPointMake(tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE)/2,
+                       - (BOTTOM_BUFFER/2) - (BOARD_ROWS * TILE_SIZE)/2);
 }
 
 /**
@@ -134,6 +150,51 @@
     
     NSMutableArray *column_array = [tiles objectAtIndex:col];
     return [column_array objectAtIndex:row];
+}
+
+-(ZSNewTileNode*)addNewTile:(ZSNewTileNode *)tile atColumn:(int)col {
+    // Sanity checks
+    if(col >= BOARD_COLUMNS || col < 0) {
+        return nil;
+    }
+    
+    ZSNewTileNode *k = new_tiles[col];
+    if(k != nil)
+        return nil; // there is already a new tile here
+    
+    new_tiles[col] = tile;
+    // Add the tile to the actual board
+    tile.position = [self getPositionForNewTile:tile];
+    [self addChild:tile];
+    
+    return tile;
+}
+
+-(ZSNewTileNode*)newTileAtColumn:(int)col {
+    // Sanity checks
+    if(col >= BOARD_COLUMNS || col < 0) {
+        return nil;
+    }
+    
+    return new_tiles[col];
+}
+
+-(ZSNewTileNode*)removeNewTileAtColumn:(int)col {
+    // Sanity checks
+    if(col >= BOARD_COLUMNS || col < 0) {
+        return nil;
+    }
+    
+    ZSNewTileNode *k = [self newTileAtColumn:col];
+    if(k == nil)
+        return nil;
+    
+    
+    new_tiles[col] = nil;
+    // Remove the tile from the actual grid
+    [k removeFromParent];
+    
+    return k;
 }
 
 /**

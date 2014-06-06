@@ -9,12 +9,12 @@
 #import <XCTest/XCTest.h>
 #import "ZSBoardNode.h"
 #import "ZSUtility.h"
+#import "ZSNewTileNode.h"
+#import "ZSTileNode.h"
 
 @interface ZSBoardNodeTest : XCTestCase
 
 @end
-
-@class ZSTileNode;
 
 @implementation ZSBoardNodeTest {
     ZSBoardNode *board;
@@ -120,6 +120,52 @@
               "tileAt returning the wrong tile.");
     XCTAssert([board tileAtColumn:0 andRow:2].value == 3,
               "tileAt returning the wrong tile.");
+}
+
+- (void)testAddNewTile {
+    ZSNewTileNode *k = [ZSNewTileNode nodeWithValue:5];
+    ZSNewTileNode *p = [board addNewTile:k atColumn:4];
+    
+    XCTAssert(p == k,
+              "addNewTile should add the tile to the column.");
+    
+    XCTAssert(p.position.x == p.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE)/2,
+              "addNewTile should set the position for the tile");
+    
+    k = [ZSNewTileNode nodeWithValue:3];
+    p = [board addNewTile:k atColumn:4];
+    
+    XCTAssertNil(p,
+                 "addNewTile should return nil when there is already a tile.");
+    
+    XCTAssertNil([board addNewTile:k atColumn:8],
+                 "addNewTile should return nil when the column is invalid.");
+}
+
+- (void)testNewTileAt {
+    ZSNewTileNode *k = [ZSNewTileNode nodeWithValue:5];
+    ZSNewTileNode *p = [board addNewTile:k atColumn:4];
+    k = [board newTileAtColumn:4];
+    XCTAssert(k == p,
+              "tileAtColumn should return the correct tile.");
+    
+    XCTAssertNil([board newTileAtColumn:3],
+                 "tileAtColumn should return nil when there is no tile.");
+}
+
+- (void)testRemoveNewTile {
+    ZSNewTileNode *k = [ZSNewTileNode nodeWithValue:5];
+    ZSNewTileNode *f = [ZSNewTileNode nodeWithValue:6];
+    [board addNewTile:k atColumn:4];
+    [board addNewTile:f atColumn:5];
+    
+    ZSNewTileNode *l = [board removeNewTileAtColumn:4];
+    XCTAssert(l == k,
+              "remove should remove the correct newtile.");
+    
+    l = [board newTileAtColumn:5];
+    XCTAssert(l == f,
+              "removal should not affect other newtiles.");
 }
 
 - (void)tearDown {
