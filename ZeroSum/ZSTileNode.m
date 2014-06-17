@@ -87,7 +87,7 @@
     SKShapeNode* s = [SKShapeNode node];
     s.path = CGPathCreateWithRect(CGRectMake(0, 0, SQUARE_SIZE, SQUARE_SIZE), NULL);
     s.position = CGPointMake(1, 1);
-    s.strokeColor = _value < 0 ? [UIColor redColor] : [UIColor cyanColor];
+    s.strokeColor = _value < 0 ? [UIColor redColor] : [UIColor greenColor];
     
     SKLabelNode* l = [SKLabelNode node];
     l.text = [NSString stringWithFormat:@"%d", abs(_value)];

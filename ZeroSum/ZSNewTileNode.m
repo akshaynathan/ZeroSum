@@ -50,7 +50,7 @@
     CGPathRef dashed = CGPathCreateCopyByDashingPath(k, NULL, 0, pattern, 2);
     s.path = dashed;
     s.position = CGPointMake(1, 1);
-    s.strokeColor = _value < 0 ? [UIColor redColor] : [UIColor cyanColor];
+    s.strokeColor = _value < 0 ? [UIColor redColor] : [UIColor greenColor];
     
     SKLabelNode* l = [SKLabelNode node];
     l.text = [NSString stringWithFormat:@"%d", abs(_value)];

@@ -7,13 +7,15 @@
 //
 
 #import "ZSGameScene.h"
-#import "ZSNewTileNode.h"
+#import "ZSBoardNode.h"
+#import "ZSUtility.h"
+#import "ZSGod.h"
 
 @class ZSTileNode;
 
 @implementation ZSGameScene {
     ZSBoardNode *board;         // Game board
-    ZSChain *chain;             // Current chain of tiles
+    ZSGod *god;
 }
 
 /**
@@ -21,11 +23,9 @@
  */
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
-        // Create the board
-        //[self addChild:[self createBoard]];
-        ZSNewTileNode* k = [ZSNewTileNode nodeWithValue:4];
-        k.position = CGPointMake(50, 50);
-        [self addChild:k];
+        ZSBoardNode *gameboard = [self createBoard];
+        ZSGod *g = [[ZSGod alloc] initWithBoard:gameboard];
+        [g start];
     }
     return self;
 }
@@ -35,11 +35,9 @@
  */
 -(ZSBoardNode*)createBoard {
     ZSBoardNode *b = [ZSBoardNode node];
-    b.size = CGSizeMake(SCREEN_WIDTH,
-                            TILE_SIZE * BOARD_ROWS);
     b.position = CGPointMake(SCREEN_WIDTH/2,
-                                 TILE_SIZE * BOARD_ROWS/2
-                                 + BOTTOM_BUFFER); // Save space at bottom
+                                 TILE_SIZE * BOARD_ROWS/2 + BOTTOM_BUFFER);
+    [self addChild:b];
     return b;
 }
 

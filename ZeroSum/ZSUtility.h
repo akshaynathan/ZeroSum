@@ -16,11 +16,11 @@
 #define TILE_SIZE 40
 #define BOARD_COLUMNS 8
 #define BOARD_ROWS 12
-
 #define BOTTOM_BUFFER TILE_SIZE + 4
-
 #define SQUARE_SIZE (TILE_SIZE - 4)
 
+// Game Dynamics
+#define STARTING_TILES 5
 
 // Animation
 #define UPWARD_SHIFT_DURATION 0.3
@@ -28,7 +28,6 @@
 
 // Debugging and logging
 #define DEBUG 1
-
 #ifdef DEBUG
 #define DEBUG_LOG( s, ... ) NSLog( @"<%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__,  [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #else

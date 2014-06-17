@@ -203,9 +203,9 @@
 // TODO: Replace the manual drawing with a sprite.
 -(void)draw {
     // Draw Board (to be replaced with image)
-    int base_y = BOTTOM_BUFFER - (TILE_SIZE * BOARD_ROWS/2);
+    int base_y = 0 - (TILE_SIZE * BOARD_ROWS/2);
     int top_y = base_y + (TILE_SIZE * BOARD_ROWS);
-    int border_l = -(TILE_SIZE * BOARD_COLUMNS/2);
+    int border_l = 0 - (TILE_SIZE * BOARD_COLUMNS/2);
     
     // Draw the horizontal borders
     CGMutablePathRef p = CGPathCreateMutable();
@@ -224,7 +224,7 @@
     grid.path = p;
     grid.strokeColor = [UIColor blackColor];
     grid.antialiased = NO;
-    grid.lineWidth = 0.5f;
+    grid.lineWidth = 1;
     [self addChild:grid];
 }
 
