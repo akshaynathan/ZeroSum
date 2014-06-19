@@ -51,7 +51,7 @@
                          next.position.x + SQUARE_SIZE / 2,
                          next.position.y + SQUARE_SIZE / 2);
     conn.path = k;
-    conn.strokeColor = [UIColor yellowColor];
+    conn.strokeColor = [UIColor blackColor];
     conn.lineWidth = 1;
     
     connector = conn; // Set this node to connected.

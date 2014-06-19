@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C16407C195018F500536D05 /* ZSGod.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16407B195018F500536D05 /* ZSGod.m */; };
+		8C1640801952A8B400536D05 /* ZSGodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16407F1952A8B400536D05 /* ZSGodTest.m */; };
 		8C6AB8C319358DD500530AC5 /* ZSTileNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */; };
 		8C6AB8C51935A73700530AC5 /* ZSChainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AB8C41935A73700530AC5 /* ZSChainTest.m */; };
 		8C70F06F19009ABE0062A93B /* ZSTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C70F06E19009ABE0062A93B /* ZSTileNode.m */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		8C16407A195018F500536D05 /* ZSGod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSGod.h; sourceTree = "<group>"; };
 		8C16407B195018F500536D05 /* ZSGod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSGod.m; sourceTree = "<group>"; };
+		8C16407F1952A8B400536D05 /* ZSGodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSGodTest.m; sourceTree = "<group>"; };
 		8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileNodeTest.m; sourceTree = "<group>"; };
 		8C6AB8C41935A73700530AC5 /* ZSChainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSChainTest.m; sourceTree = "<group>"; };
 		8C70F06D19009ABE0062A93B /* ZSTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSTileNode.h; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				8C7ED1D7192C3F5B00A22DD5 /* ZSBoardNodeTest.m */,
 				8CB98C97194179040082115A /* ZSNewTileNodeTest.m */,
 				8C6AB8C41935A73700530AC5 /* ZSChainTest.m */,
+				8C16407F1952A8B400536D05 /* ZSGodTest.m */,
 				8CF8744518EE3FF600E8473D /* Supporting Files */,
 			);
 			path = ZeroSumTests;
@@ -313,6 +316,7 @@
 			files = (
 				8C6AB8C319358DD500530AC5 /* ZSTileNodeTest.m in Sources */,
 				8CB98C98194179040082115A /* ZSNewTileNodeTest.m in Sources */,
+				8C1640801952A8B400536D05 /* ZSGodTest.m in Sources */,
 				8C6AB8C51935A73700530AC5 /* ZSChainTest.m in Sources */,
 				8C7ED1D8192C3F5B00A22DD5 /* ZSBoardNodeTest.m in Sources */,
 			);

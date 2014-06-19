@@ -102,11 +102,16 @@
                  "removeTile should return nil for tiles that dont exist.");
     
     // Removing real tile shifts other tiles down
+    t = [board tileAtColumn:0 andRow:1];
+    [t connectTo:[board tileAtColumn:0 andRow:2]];
+    
     t = [board removeTileAtColumn:0 andRow:1];
     XCTAssert(t.value == 4,
               "removeTile is removing the wrong tile.");
     XCTAssert([board tileAtColumn:0 andRow:1].value == 3,
               "removeTile should shift down other tiles.");
+    XCTAssert([t isConnected] == NO,
+              "removeTile should disconnect tile.");
 }
 
 - (void)testTileAt {
@@ -120,6 +125,8 @@
               "tileAt returning the wrong tile.");
     XCTAssert([board tileAtColumn:0 andRow:2].value == 3,
               "tileAt returning the wrong tile.");
+    XCTAssert([board tileAtColumn:0 andRow:3] == nil,
+              "invalid tileAt should return nil.");
 }
 
 - (void)testAddNewTile {

@@ -10,11 +10,9 @@
 #import "ZSBoardNode.h"
 #import "ZSUtility.h"
 #import "ZSGod.h"
-
-@class ZSTileNode;
+#import "ZSTileNode.h"
 
 @implementation ZSGameScene {
-    ZSBoardNode *board;         // Game board
     ZSGod *god;
 }
 
@@ -24,8 +22,8 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         ZSBoardNode *gameboard = [self createBoard];
-        ZSGod *g = [[ZSGod alloc] initWithBoard:gameboard];
-        [g start];
+        god = [[ZSGod alloc] initWithBoard:gameboard];
+        [god start];
     }
     return self;
 }
@@ -44,22 +42,36 @@
 /**
  * Manages new touch events
  */
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
+-(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
+    UITouch *t = [touches anyObject];
+    NSArray *nodes = [self nodesAtPoint:[t locationInNode:self]];
+    for(SKNode *n in nodes) {
+        if([n isKindOfClass:[ZSTileNode class]]) {
+            [god addTileToChain:(ZSTileNode*) n];
+            break;
+        }
+    }
 }
 
 /**
  * Manages touch move events
  */
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-
+-(void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
+    UITouch *t = [touches anyObject];
+    NSArray *nodes = [self nodesAtPoint:[t locationInNode:self]];
+    for(SKNode *n in nodes) {
+        if([n isKindOfClass:[ZSTileNode class]]) {
+            [god addTileToChain:(ZSTileNode*)n];
+            break;
+        }
+    }
 }
 
 /**
  * Manages touch end events
  */
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-
+-(void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
+    [god clearChain];
 }
 
 -(void)update:(CFTimeInterval)currentTime {

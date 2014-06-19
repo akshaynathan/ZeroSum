@@ -16,16 +16,12 @@
     self = [super init];
     
     chain = [[NSMutableArray alloc] init];
-    _runningSum = -1;
+    _runningSum = 0;
     
     return self;
 }
 
 -(void)addTile:(ZSTileNode*)tile {
-    if(_runningSum == -1) {
-        _runningSum = 0; // Chain with tiles
-    }
-    
     [chain addObject:tile];
     _runningSum += tile.value;
 }
@@ -35,16 +31,12 @@
 }
 
 -(ZSTileNode*)popTile {
-    if(_runningSum == -1)
-        return nil; // Empty chain
+    if([chain count] == 0)
+        return nil;
     
     ZSTileNode* ret = [chain lastObject];
     [chain removeLastObject];
     _runningSum += -1 * ret.value;
-    
-    if([chain count] == 0) {
-        _runningSum = -1;
-    }
     return ret;
 }
 

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class ZSBoardNode;
+@class ZSTileNode;
 
 @interface ZSGod : NSObject
 
@@ -25,5 +26,17 @@
  *  Start the game.
  */
 -(void)start;
+
+/**
+ *  Adds the tile to the chain if its a valid next tile.
+ *  Returns the tile or nil if it cant be added.
+ */
+-(ZSTileNode*)addTileToChain:(ZSTileNode*)tile;
+
+/**
+ *  Clears the chain, updates the score if the sum is 0.
+ *  Returns the sum of the chain.
+ */
+-(int)clearChain;
 
 @end

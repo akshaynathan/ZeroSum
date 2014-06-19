@@ -32,8 +32,8 @@
 {
     XCTAssertNil([chain popTile],
                  "Empty chain should return nil tile.");
-    XCTAssert(chain.runningSum == -1,
-              "Empty chain should have -1 running sum.");
+    XCTAssert(chain.runningSum == 0,
+              "Empty chain should have 0 running sum.");
 }
 
 - (void)testAddTile

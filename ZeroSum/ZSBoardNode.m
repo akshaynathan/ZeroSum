@@ -128,6 +128,9 @@
     // Delete the tile from the board
     [n removeFromParent];
     
+    // Remove the connector if it exists
+    [n disconnect];
+    
     // Shift down the other tiles
     int i = n.row; // Start at the new occupant
     while(i < [column_array count]) {
@@ -149,6 +152,9 @@
     }
     
     NSMutableArray *column_array = [tiles objectAtIndex:col];
+    if(row >= [column_array count])
+        return nil;
+    
     return [column_array objectAtIndex:row];
 }
 
