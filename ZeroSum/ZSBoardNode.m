@@ -204,6 +204,23 @@
     return k;
 }
 
+
+-(int)getFreeColumn {
+    NSMutableArray *avail = [[NSMutableArray alloc] init];
+    for(int i = 0; i < BOARD_COLUMNS; i++) {
+        if([self newTileAtColumn:i] == nil) {
+            [avail addObject:[NSNumber numberWithInt:i]];
+        }
+    }
+    int range = (int)[avail count];
+    if(range == 0) {
+        return -1;
+    } else {
+        NSNumber *k = [avail objectAtIndex:arc4random_uniform(range)];
+        return [k intValue];
+    }
+}
+
 /**
  *  Draws the board
  */
@@ -233,17 +250,6 @@
     grid.antialiased = NO;
     grid.lineWidth = 1;
     [self addChild:grid];
-}
-
--(int)getFreeColumn {
-    int k = arc4random_uniform(8);
-    for(int i = 0; i < BOARD_COLUMNS; i++) {
-        if([self newTileAtColumn:k] == nil) {
-            return k;
-        }
-        k = (k + 1) % 7;
-    }
-    return -1;
 }
 
 /**
