@@ -44,6 +44,8 @@
               "toRealTile should preserve value and column.");
     XCTAssert(k.row == 1,
               "toRealTile should set row to 1.");
+    XCTAssert(t.isEmerging == YES,
+              "toRealTile should set isEmerging to YES.");
 }
 
 @end

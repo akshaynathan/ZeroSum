@@ -13,6 +13,7 @@
 
 @property (atomic, readwrite) int column;
 @property (atomic, readonly) int value;
+@property (atomic, readonly) BOOL isEmerging;
 
 /**
  *  Returns a ZSNewTileNode with the given value.

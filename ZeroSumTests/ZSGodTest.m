@@ -118,6 +118,9 @@
     ZSTileNode *f = [god transitionNewTile:k];
     XCTAssert(f == [board tileAtColumn:2 andRow:0],
               "transitionNewTile should add real tile.");
+    f = [god transitionNewTile:k];
+    XCTAssert(f == nil,
+              "transitionNewTile should not transition a tile that is already emerging");
 }
 
 @end

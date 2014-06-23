@@ -108,13 +108,16 @@
 }
 
 -(ZSTileNode*)transitionNewTile:(ZSNewTileNode*)t {
+    // Do not transition a tile that is already emerging
+    if(t.isEmerging == YES)
+        return nil;
+    
     ZSTileNode *ret = [t toRealTile];
     
     // Add the real tile.
     [gameboard addTile:ret atColumn:ret.column andRow:0];
     
-    // TODO: Add tests for this
-    // TODO: Add state so we cannot double emerge a new tile
+    // TODO: Add tests for this animation
     // Animate the new tile away
     [t runAction:[SKAction fadeOutWithDuration:NEW_TILE_FADE_DURATION]
       completion:^() {

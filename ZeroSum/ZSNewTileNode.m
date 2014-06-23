@@ -27,6 +27,7 @@
 -(ZSNewTileNode*)initWithValue:(int)value {
     self = [super init];
     _value = value;
+    _isEmerging = NO;
     return self;
 }
 
@@ -34,6 +35,7 @@
     ZSTileNode *ret = [ZSTileNode nodeWithValue:_value];
     ret.column = _column;
     ret.row = 1; // All new tiles become row 1 real tiles
+    _isEmerging = YES;
     return ret;
 }
 
