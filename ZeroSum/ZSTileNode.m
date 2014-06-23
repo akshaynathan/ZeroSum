@@ -36,7 +36,6 @@
 -(void)connectTo:(ZSTileNode*)next {
     // Check if the next node is a neighbor.
     if([self isNeighborsWith:next] == NO) {
-        DEBUG_LOG(@"Cannot connect non-neighboring nodes.");
         return;
     }
     
@@ -63,7 +62,11 @@
     return (other.column == _column + 1 && other.row == _row)
     || (other.column == _column - 1 && other.row == _row)
     || (other.column == _column && other.row == _row + 1)
-    || (other.column == _column && other.row == _row - 1);
+    || (other.column == _column && other.row == _row - 1)
+    || (other.column == _column + 1 && other.row == _row - 1)
+    || (other.column == _column + 1 && other.row == _row + 1)
+    || (other.column == _column - 1 && other.row == _row - 1)
+    || (other.column == _column - 1 && other.row == _row + 1);
 }
 
 -(BOOL)isConnected {
@@ -74,8 +77,6 @@
     if(connector != nil) {
         [connector removeFromParent];
         connector = nil;
-    } else {
-        DEBUG_LOG(@"Cannot disconnect unconnected node.");
     }
 }
 

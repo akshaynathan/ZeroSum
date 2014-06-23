@@ -39,7 +39,7 @@
 
 /**
  *  Check's if this tile neighbors the other tile.
- *  Tiles can be horizontal or vertical neighbors.
+ *  Tiles can be horizontal or vertical neighbors or diagonal neighbors.
  *
  *  @param other The other tile.
  *

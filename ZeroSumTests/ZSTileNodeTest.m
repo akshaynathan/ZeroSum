@@ -66,6 +66,30 @@
     
     XCTAssert([node isNeighborsWith:other],
               "Unable to detect column neighbor.");
+    
+    other.row = 4;
+    other.column = 5;
+    
+    XCTAssert([node isNeighborsWith:other],
+              "Unable to detect diagonal neighbor.");
+    
+    other.row = 4;
+    other.column = 3;
+    
+    XCTAssert([node isNeighborsWith:other],
+              "Unable to detect diagonal neighbor.");
+    
+    other.row = 2;
+    other.column = 5;
+    
+    XCTAssert([node isNeighborsWith:other],
+              "Unable to detect diagonal neighbor.");
+    
+    other.row = 2;
+    other.column = 3;
+    
+    XCTAssert([node isNeighborsWith:other],
+              "Unable to detect diagonal neighbor.");
 }
 
 
