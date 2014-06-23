@@ -10,6 +10,7 @@
 #import "ZSGod.h"
 #import "ZSBoardNode.h"
 #import "ZSTileNode.h"
+#import "ZSNewTileNode.h"
 
 @interface ZSGodTest : XCTestCase
 
@@ -58,7 +59,7 @@
               "Adding tile should connect previous tile.");
 }
 
--(void) testClearChain
+-(void)testClearChain
 {
     // This test is tricky, we will add two tiles to the first column
     // one that will not make the column sum 0, and one that will.
@@ -101,6 +102,13 @@
               "Chain should return non zero sum.");
     XCTAssertNil([board tileAtColumn:0 andRow:0],
                     "clearChain should delete tiles.");
+}
+
+-(void)testAddNewTile
+{
+    ZSNewTileNode* newTile = [god addNewTile];
+    XCTAssertNotNil([board newTileAtColumn:newTile.column],
+                    "addNewTile should add a new tile.");
 }
 
 @end

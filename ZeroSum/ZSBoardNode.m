@@ -170,6 +170,7 @@
     
     new_tiles[col] = tile;
     // Add the tile to the actual board
+    tile.column = col;
     tile.position = [self getPositionForNewTile:tile];
     [self addChild:tile];
     
@@ -232,6 +233,17 @@
     grid.antialiased = NO;
     grid.lineWidth = 1;
     [self addChild:grid];
+}
+
+-(int)getFreeColumn {
+    int k = arc4random_uniform(8);
+    for(int i = 0; i < BOARD_COLUMNS; i++) {
+        if([self newTileAtColumn:k] == nil) {
+            return k;
+        }
+        k = (k + 1) % 7;
+    }
+    return -1;
 }
 
 /**

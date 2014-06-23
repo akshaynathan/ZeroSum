@@ -83,5 +83,11 @@
  */
 -(ZSNewTileNode*)removeNewTileAtColumn:(int)col;
 
+/**
+ *  Returns a random empty column.
+ *
+ *  @return The index of an empty column or -1 if no such column is available.
+ */
+-(int)getFreeColumn;
 
 @end

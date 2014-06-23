@@ -139,6 +139,9 @@
     XCTAssert(p.position.x == p.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE)/2,
               "addNewTile should set the position for the tile");
     
+    XCTAssert(p.column == 4,
+              "addNewTile should set column of new tile.");
+    
     k = [ZSNewTileNode nodeWithValue:3];
     p = [board addNewTile:k atColumn:4];
     
@@ -173,6 +176,19 @@
     l = [board newTileAtColumn:5];
     XCTAssert(l == f,
               "removal should not affect other newtiles.");
+}
+
+- (void)testGetFreeColumn {
+    int k = [board getFreeColumn];
+    XCTAssert(k != -1,
+              "getFreeColumn should return free column index.");
+    for(int i = 0; i < BOARD_COLUMNS; i++) {
+        ZSNewTileNode *k = [ZSNewTileNode nodeWithValue:5];
+        [board addNewTile:k atColumn:i];
+    }
+    k = [board getFreeColumn];
+    XCTAssert(k == -1,
+              "getFreeColumn should return -1 when columns are full.");
 }
 
 - (void)tearDown {

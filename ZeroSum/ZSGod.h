@@ -10,6 +10,7 @@
 
 @class ZSBoardNode;
 @class ZSTileNode;
+@class ZSNewTileNode;
 
 @interface ZSGod : NSObject
 
@@ -38,5 +39,12 @@
  *  Returns the sum of the chain.
  */
 -(int)clearChain;
+
+/**
+ *  Adds a new tile and schedules the next addition.
+ *  If the tile cannot be added, it is placed in the queue.
+ */
+-(ZSNewTileNode*)addNewTile;
+
 
 @end

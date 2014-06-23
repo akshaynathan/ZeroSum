@@ -11,21 +11,35 @@
 #import "ZSBoardNode.h"
 #import "ZSTileNode.h"
 #import "ZSChain.h"
+#import "ZSNewTileNode.h"
 
 @implementation ZSGod {
-    ZSBoardNode* gameboard;
+    ZSBoardNode *gameboard;
     ZSChain *chain;
+    NSTimer *tileAdderTimer;
+    NSMutableArray *tilesBackLog;
+    double addInterval;
 }
 
 -(ZSGod*)initWithBoard:(ZSBoardNode*)board {
     self = [super init];
     gameboard = board;
     chain = [[ZSChain alloc] init];
+    tilesBackLog = [[NSMutableArray alloc] init];
+    addInterval = 10.0;
     return self;
 }
 
 -(void)start {
+    // Create starting tiles
     [self initStartingTiles];
+    
+    // Add initial timer
+    tileAdderTimer = [NSTimer scheduledTimerWithTimeInterval:GRACE_PERIOD
+                                                      target:self
+                                                    selector:@selector(addNewTile)
+                                                    userInfo:nil
+                                                     repeats:NO];
 }
 
 /**
@@ -70,6 +84,27 @@
         }
     }
     return sum;
+}
+
+-(ZSNewTileNode*)addNewTile {
+    ZSNewTileNode *n = [ZSNewTileNode nodeWithValue:[ZSUtility randomValue]];
+    int new_column = [gameboard getFreeColumn];
+    if(new_column == -1) {
+        // Add tile to queue for later
+        // TODO: Add tests for the queue.
+        [tilesBackLog addObject:n];
+    } else {
+        [gameboard addNewTile:n atColumn:new_column];
+    }
+    
+    // Reset timer
+    // TODO: Add tests for timer
+    tileAdderTimer = [NSTimer scheduledTimerWithTimeInterval:addInterval
+                                                      target:self
+                                                    selector:@selector(addNewTile)
+                                                    userInfo:nil
+                                                     repeats:NO];
+    return n;
 }
 
 @end
