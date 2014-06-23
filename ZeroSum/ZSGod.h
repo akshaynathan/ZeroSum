@@ -46,5 +46,14 @@
  */
 -(ZSNewTileNode*)addNewTile;
 
+/**
+ *  Makes a new tile node into a real tile.
+ *  Also adds tiles out of the queue if possible.
+ *
+ *  @param t The new tile to emerge.
+ *
+ *  @return The tile that the new tile becomes.
+ */
+-(ZSTileNode*)transitionNewTile:(ZSNewTileNode*)t;
 
 @end

@@ -11,6 +11,7 @@
 #import "ZSUtility.h"
 #import "ZSGod.h"
 #import "ZSTileNode.h"
+#import "ZSNewTileNode.h"
 
 @implementation ZSGameScene {
     ZSGod *god;
@@ -48,6 +49,10 @@
     for(SKNode *n in nodes) {
         if([n isKindOfClass:[ZSTileNode class]]) {
             [god addTileToChain:(ZSTileNode*) n];
+            break;
+        }
+        if([n isKindOfClass:[ZSNewTileNode class]]) {
+            [god transitionNewTile:(ZSNewTileNode*)n];
             break;
         }
     }

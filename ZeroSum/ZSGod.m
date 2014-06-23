@@ -107,4 +107,34 @@
     return n;
 }
 
+-(ZSTileNode*)transitionNewTile:(ZSNewTileNode*)t {
+    ZSTileNode *ret = [t toRealTile];
+    
+    // Add the real tile.
+    [gameboard addTile:ret atColumn:ret.column andRow:0];
+    
+    // TODO: Add tests for this
+    // TODO: Add state so we cannot double emerge a new tile
+    // Animate the new tile away
+    [t runAction:[SKAction fadeOutWithDuration:NEW_TILE_FADE_DURATION]
+      completion:^() {
+          [gameboard removeNewTileAtColumn:ret.column];
+          [self clearQueue:ret.column];
+      }];
+    return ret;
+}
+
+/**
+ *  If the queue has items, this will add the first new tile
+ *  to the newly opened position.
+ *
+ *  @param column The column to add the new tile to.
+ */
+-(void)clearQueue:(int)column {
+    if([tilesBackLog count] != 0) {
+        ZSNewTileNode *k = [tilesBackLog objectAtIndex:0];
+        [tilesBackLog removeObjectAtIndex:0];
+        [gameboard addNewTile:k atColumn:column];
+    }
+}
 @end

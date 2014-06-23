@@ -111,4 +111,13 @@
                     "addNewTile should add a new tile.");
 }
 
+-(void)testTransitionNewTile {
+    ZSNewTileNode *k = [ZSNewTileNode nodeWithValue:5];
+    [board addNewTile:k atColumn:2];
+    
+    ZSTileNode *f = [god transitionNewTile:k];
+    XCTAssert(f == [board tileAtColumn:2 andRow:0],
+              "transitionNewTile should add real tile.");
+}
+
 @end
