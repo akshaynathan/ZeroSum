@@ -201,13 +201,25 @@
       [avail addObject:[NSNumber numberWithInt:i]];
     }
   }
-  int range = (int)[avail count];
-  if (range == 0) {
-    return -1;
-  } else {
-    NSNumber *k = [avail objectAtIndex:arc4random_uniform(range)];
-    return [k intValue];
+  // Sort the array
+  NSArray *sortedArray = [avail sortedArrayUsingComparator:^NSComparisonResult(
+                                                               id a, id b) {
+      NSNumber *f =
+          [NSNumber numberWithUnsignedInteger:
+                        [[tiles objectAtIndex:[a unsignedIntegerValue]] count]];
+      NSNumber *s =
+          [NSNumber numberWithUnsignedInteger:
+                        [[tiles objectAtIndex:[b unsignedIntegerValue]] count]];
+      return [f compare:s];
+  }];
+
+  int length = (int)[sortedArray count];
+  for (int i = 0; i < length; i++) {
+    if (rand() % 10 > 3 || i == length - 1) {
+      return [[sortedArray objectAtIndex:i] intValue];
+    }
   }
+  return -1;
 }
 
 /**

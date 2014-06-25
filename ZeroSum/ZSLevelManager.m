@@ -43,8 +43,8 @@ static LevelData levelData[] = {{10.0, 5.0},
  */
 - (int)calculateNewLevelForScore:(int)score andChains:(int)chains {
   int c = 1 + chains / 10;
-  int s = 1 + log2(score) / 5;
-  return ceil((c + s) / 2);
+  int s = score > 0 ? 1 + log2(score) / 5 : 0;
+  return MIN(ceil((c + s) / 2), 10);
 }
 
 @end
