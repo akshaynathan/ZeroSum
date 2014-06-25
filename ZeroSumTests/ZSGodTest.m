@@ -11,6 +11,7 @@
 #import "ZSBoardNode.h"
 #import "ZSTileNode.h"
 #import "ZSNewTileNode.h"
+#import "ZSChain.h"
 
 @interface ZSGodTest : XCTestCase
 
@@ -93,11 +94,15 @@
 - (void)testTransitionNewTile {
   ZSNewTileNode *k = [ZSNewTileNode nodeWithValue:5];
   [board addNewTile:k atColumn:2];
+  [god addTileToChain:[board tileAtColumn:2 andRow:3]];
+  [god addTileToChain:[board tileAtColumn:3 andRow:3]];
 
   ZSTileNode *f = [god transitionNewTile:k];
   XCTAssert(f == [board tileAtColumn:2 andRow:0],
             "transitionNewTile should add real tile.");
   XCTAssert([k hasActions], "transitionNewTile should add animation action.");
+  XCTAssertNil([god.chain lastTile],
+               "transitionNewTile should destroy chain if needed");
   f = [god transitionNewTile:k];
   XCTAssert(f == nil,
             "transitionNewTile should not transition a tile that is already "

@@ -17,7 +17,6 @@
 #import "ZSLevelManager.h"
 
 @implementation ZSGod {
-  ZSChain *chain;
   ZSTileAdder *tileAdder;
   int currentLevel;
   int chains;
@@ -26,7 +25,7 @@
 - (ZSGod *)initWithBoard:(ZSBoardNode *)board {
   if (self = [super init]) {
     _gameboard = board;
-    chain = [[ZSChain alloc] init];
+    _chain = [[ZSChain alloc] init];
     tileAdder = [[ZSTileAdder alloc] initWithGod:self];
     _score = [[ZSScore alloc] init];
     _levelMan = [[ZSLevelManager alloc] init];
@@ -60,25 +59,25 @@
 
 - (ZSTileNode *)addTileToChain:(ZSTileNode *)tile {
   // No repeats
-  if (tile == [chain lastTile]) return nil;
+  if (tile == [_chain lastTile]) return nil;
 
   // No non neighbors
-  if (!([tile isNeighborsWith:[chain lastTile]]) && [chain lastTile] != nil)
+  if (!([tile isNeighborsWith:[_chain lastTile]]) && [_chain lastTile] != nil)
     return nil;
 
   // No cycles
   if ([tile isConnected]) return nil;
-  [[chain lastTile] connectTo:tile];
-  [chain addTile:tile];
+  [[_chain lastTile] connectTo:tile];
+  [_chain addTile:tile];
   return tile;
 }
 
 - (int)clearChain {
-  int sum = [chain runningSum];
+  int sum = [_chain runningSum];
   if (sum == 0) {
     int length = 0;
-    while ([chain lastTile] != nil) {
-      ZSTileNode *t = [chain popTile];
+    while ([_chain lastTile] != nil) {
+      ZSTileNode *t = [_chain popTile];
       [_gameboard removeTileAtColumn:t.column andRow:t.row];
       length += 1;
     }
@@ -88,10 +87,7 @@
                                          andChainLength:length]];
     [self updateLevel];
   } else {
-    while ([chain lastTile] != nil) {
-      ZSTileNode *t = [chain popTile];
-      [t disconnect];
-    }
+    [self deleteChain];
   }
   return sum;
 }
@@ -113,6 +109,17 @@
 
   ZSTileNode *ret = [t toRealTile];
 
+  // Break any chains that should be broken
+  int i = 0;
+  ZSTileNode *check = [_gameboard tileAtColumn:t.column andRow:i];
+  while (check != nil) {
+    if ([check isConnected]) {
+      [self deleteChain];
+      break;
+    }
+    check = [_gameboard tileAtColumn:t.column andRow:++i];
+  }
+
   // Add the real tile.
   [_gameboard addTile:ret atColumn:ret.column andRow:0];
 
@@ -127,5 +134,15 @@
           [tileAdder clearQueue:ret.column];
       }];
   return ret;
+}
+
+/**
+ *  Deletes the chain, but doesnt delete the tiles.
+ */
+- (void)deleteChain {
+  while ([_chain lastTile] != nil) {
+    ZSTileNode *t = [_chain popTile];
+    [t disconnect];
+  }
 }
 @end

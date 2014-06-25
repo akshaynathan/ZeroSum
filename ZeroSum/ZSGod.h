@@ -13,9 +13,11 @@
 @class ZSNewTileNode;
 @class ZSScore;
 @class ZSLevelManager;
+@class ZSChain;
 
 @interface ZSGod : NSObject
 
+@property(atomic, readonly) ZSChain *chain;
 @property(atomic, readonly) ZSBoardNode *gameboard;
 @property(atomic, readonly) ZSScore *score;
 @property(atomic, readonly) ZSLevelManager *levelMan;
