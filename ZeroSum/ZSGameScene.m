@@ -72,8 +72,10 @@
   NSArray *nodes = [self nodesAtPoint:[t locationInNode:self]];
   for (SKNode *n in nodes) {
     if ([n isKindOfClass:[ZSTileNode class]]) {
-      [god addTileToChain:(ZSTileNode *)n];
-      break;
+      if ([(ZSTileNode *)n isCentered:[t locationInNode:n]]) {
+        [god addTileToChain:(ZSTileNode *)n];
+        break;
+      }
     }
   }
 }

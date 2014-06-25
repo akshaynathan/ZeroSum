@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "ZSTileNode.h"
+#import "ZSUtility.h"
 
 @interface ZSTileNodeTest : XCTestCase
 
@@ -100,6 +101,14 @@
   XCTAssertFalse([node isConnected], "Node should disconnect.");
 
   [node disconnect];  // This should not do anything
+}
+
+- (void)testIsCentered {
+  CGPoint k = CGPointMake(TILE_SIZE / 2, TILE_SIZE / 2);
+  ZSTileNode *f = [ZSTileNode nodeWithValue:5];
+  XCTAssert([f isCentered:k], "isCentered should return YES for real center.");
+  CGPoint l = CGPointMake(0, 0);
+  XCTAssertFalse([f isCentered:l], "isCentered should return NO for origin.");
 }
 
 @end

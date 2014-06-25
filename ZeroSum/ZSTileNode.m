@@ -78,6 +78,12 @@
   }
 }
 
+- (BOOL)isCentered:(CGPoint)p {
+  int center = TILE_SIZE / 2;
+  return (p.x >= center - CENTER_BUFFER && p.x <= center + CENTER_BUFFER) &&
+         (p.y >= center - CENTER_BUFFER && p.y <= center + CENTER_BUFFER);
+}
+
 /**
  *  Draws the actual tile.
  */

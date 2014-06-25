@@ -56,4 +56,13 @@
  */
 - (BOOL)isConnected;
 
+/**
+ *  Returns YES if the point is in the approximate center of the node.
+ *
+ *  @param p The point.
+ *
+ *  @return YES if the point is in the center, no otherwise.
+ */
+- (BOOL)isCentered:(CGPoint)p;
+
 @end
