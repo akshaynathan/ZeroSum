@@ -54,7 +54,6 @@
     }
     
     // Reset timer
-    // TODO: Add tests for timer
     addNextTile = [NSTimer scheduledTimerWithTimeInterval:_addDuration
                                                       target:self
                                                     selector:@selector(addNewTile)

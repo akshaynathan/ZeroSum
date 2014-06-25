@@ -10,6 +10,7 @@
 		8C16407C195018F500536D05 /* ZSGod.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16407B195018F500536D05 /* ZSGod.m */; };
 		8C1640801952A8B400536D05 /* ZSGodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16407F1952A8B400536D05 /* ZSGodTest.m */; };
 		8C5667C7195A563600B3B975 /* ZSTileAdder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5667C6195A563600B3B975 /* ZSTileAdder.m */; };
+		8C5667C9195A65F900B3B975 /* ZSTileAdderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5667C8195A65F900B3B975 /* ZSTileAdderTest.m */; };
 		8C6AB8C319358DD500530AC5 /* ZSTileNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */; };
 		8C6AB8C51935A73700530AC5 /* ZSChainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AB8C41935A73700530AC5 /* ZSChainTest.m */; };
 		8C70F06F19009ABE0062A93B /* ZSTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C70F06E19009ABE0062A93B /* ZSTileNode.m */; };
@@ -51,6 +52,7 @@
 		8C16407F1952A8B400536D05 /* ZSGodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSGodTest.m; sourceTree = "<group>"; };
 		8C5667C5195A563600B3B975 /* ZSTileAdder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSTileAdder.h; sourceTree = "<group>"; };
 		8C5667C6195A563600B3B975 /* ZSTileAdder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileAdder.m; sourceTree = "<group>"; };
+		8C5667C8195A65F900B3B975 /* ZSTileAdderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileAdderTest.m; sourceTree = "<group>"; };
 		8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileNodeTest.m; sourceTree = "<group>"; };
 		8C6AB8C41935A73700530AC5 /* ZSChainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSChainTest.m; sourceTree = "<group>"; };
 		8C70F06D19009ABE0062A93B /* ZSTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSTileNode.h; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				8CB98C97194179040082115A /* ZSNewTileNodeTest.m */,
 				8C6AB8C41935A73700530AC5 /* ZSChainTest.m */,
 				8C16407F1952A8B400536D05 /* ZSGodTest.m */,
+				8C5667C8195A65F900B3B975 /* ZSTileAdderTest.m */,
 				8CF8744518EE3FF600E8473D /* Supporting Files */,
 			);
 			path = ZeroSumTests;
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C6AB8C319358DD500530AC5 /* ZSTileNodeTest.m in Sources */,
+				8C5667C9195A65F900B3B975 /* ZSTileAdderTest.m in Sources */,
 				8CB98C98194179040082115A /* ZSNewTileNodeTest.m in Sources */,
 				8C1640801952A8B400536D05 /* ZSGodTest.m in Sources */,
 				8C6AB8C51935A73700530AC5 /* ZSChainTest.m in Sources */,
