@@ -14,10 +14,13 @@
 #import "ZSNewTileNode.h"
 #import "ZSTileAdder.h"
 #import "ZSScore.h"
+#import "ZSLevelManager.h"
 
 @implementation ZSGod {
   ZSChain *chain;
   ZSTileAdder *tileAdder;
+  int currentLevel;
+  int chains;
 }
 
 - (ZSGod *)initWithBoard:(ZSBoardNode *)board {
@@ -26,6 +29,8 @@
     chain = [[ZSChain alloc] init];
     tileAdder = [[ZSTileAdder alloc] initWithGod:self];
     _score = [[ZSScore alloc] init];
+    _levelMan = [[ZSLevelManager alloc] init];
+    chains = 0;
   }
   return self;
 }
@@ -77,9 +82,11 @@
       [_gameboard removeTileAtColumn:t.column andRow:t.row];
       length += 1;
     }
+    chains++;
     // TODO: Integrate this with level manager
-    [_score
-        updateScore:[ZSScore calculateScoreForLevel:1 andChainLength:length]];
+    [_score updateScore:[ZSScore calculateScoreForLevel:currentLevel
+                                         andChainLength:length]];
+    [self updateLevel];
   } else {
     while ([chain lastTile] != nil) {
       ZSTileNode *t = [chain popTile];
@@ -87,6 +94,17 @@
     }
   }
   return sum;
+}
+
+/**
+ *  Update the level and set the durations.
+ */
+- (void)updateLevel {
+  LevelData l = [_levelMan updateLevelWithScore:_score.score andChains:chains];
+  currentLevel = _levelMan.level;
+  tileAdder.addDuration = l.addDuration;
+  tileAdder.emergeDuration = l.emergeDuration;
+  NSLog(@"Level %d\n", currentLevel);
 }
 
 - (ZSTileNode *)transitionNewTile:(ZSNewTileNode *)t {
