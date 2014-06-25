@@ -32,13 +32,16 @@
 // Debugging and logging
 #define DEBUG 1
 #ifdef DEBUG
-#define DEBUG_LOG( s, ... ) NSLog( @"<%@:%d> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__,  [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define DEBUG_LOG(s, ...)                                             \
+  NSLog(@"<%@:%d> %@",                                                \
+        [[NSString stringWithUTF8String:__FILE__] lastPathComponent], \
+        __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 #else
-#define DEBUG_LOG( s, ... )
+#define DEBUG_LOG(s, ...)
 #endif
 
 @interface ZSUtility : NSObject
 
-+(int)randomValue;
++ (int)randomValue;
 
 @end

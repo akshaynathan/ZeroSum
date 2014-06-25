@@ -18,7 +18,7 @@
  *
  *  @return The constructed ZSBoardNode.
  */
-+(ZSBoardNode*)node;
++ (ZSBoardNode *)node;
 
 /**
  *  Returns the tile at the given position or nil if no such tile exists.
@@ -28,7 +28,7 @@
  *
  *  @return The ZSTileNode at the position.
  */
--(ZSTileNode*)tileAtColumn:(int)col andRow:(int)row;
+- (ZSTileNode *)tileAtColumn:(int)col andRow:(int)row;
 
 /**
  *  Adds a tile to the given position. Returns the added tile, or nil
@@ -41,7 +41,7 @@
  *
  *  @return The added ZSTileNode or nil if it could not be added.
  */
--(ZSTileNode*)addTile:(ZSTileNode*)tile atColumn:(int)col andRow:(int)row;
+- (ZSTileNode *)addTile:(ZSTileNode *)tile atColumn:(int)col andRow:(int)row;
 
 /**
  *  Removes a tile at the given position. Returns removed tile, or nil
@@ -52,7 +52,7 @@
  *
  *  @return The removed ZSTileNode or nil if the tile cannot be removed.
  */
--(ZSTileNode*)removeTileAtColumn:(int)col andRow:(int)row;
+- (ZSTileNode *)removeTileAtColumn:(int)col andRow:(int)row;
 
 /**
  *  Adds a NewTile in the column. If there is already a NewTile here,
@@ -62,7 +62,7 @@
  *
  *  @return The ZSNewTileNode if it is successfully added.
  */
--(ZSNewTileNode*)addNewTile:(ZSNewTileNode*)tile atColumn:(int)col;
+- (ZSNewTileNode *)addNewTile:(ZSNewTileNode *)tile atColumn:(int)col;
 
 /**
  *  Gets the ZSNewTileNode in the column. If there is nothing there,
@@ -72,7 +72,7 @@
  *
  *  @return The ZSNewTileNode in the column.
  */
--(ZSNewTileNode*)newTileAtColumn:(int)col;
+- (ZSNewTileNode *)newTileAtColumn:(int)col;
 
 /**
  *  Removes the ZSNewTileNode from the column.
@@ -81,13 +81,13 @@
  *
  *  @return The past NewTile or nil if there was nothing there.
  */
--(ZSNewTileNode*)removeNewTileAtColumn:(int)col;
+- (ZSNewTileNode *)removeNewTileAtColumn:(int)col;
 
 /**
  *  Returns a random empty column.
  *
  *  @return The index of an empty column or -1 if no such column is available.
  */
--(int)getFreeColumn;
+- (int)getFreeColumn;
 
 @end

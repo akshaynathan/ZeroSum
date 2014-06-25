@@ -10,7 +10,7 @@
 
 @interface ZSScore : SKNode
 
-@property (atomic, readonly) int score;
+@property(atomic, readonly) int score;
 
 /**
  *  Calculates the score to add.
@@ -20,7 +20,7 @@
  *
  *  @return The amount to add to the score.
  */
-+(int)calculateScoreForLevel:(int)level andChainLength:(int)length;
++ (int)calculateScoreForLevel:(int)level andChainLength:(int)length;
 
 /**
  *  Updates the score by incrementing by the update val.
@@ -29,6 +29,6 @@
  *
  *  @return Returns the new score.
  */
--(int)updateScore:(int)amount;
+- (int)updateScore:(int)amount;
 
 @end

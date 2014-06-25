@@ -11,9 +11,9 @@
 
 @interface ZSNewTileNode : SKNode
 
-@property (atomic, readwrite) int column;
-@property (atomic, readonly) int value;
-@property (atomic, readonly) BOOL isEmerging;
+@property(atomic, readwrite) int column;
+@property(atomic, readonly) int value;
+@property(atomic, readonly) BOOL isEmerging;
 
 /**
  *  Returns a ZSNewTileNode with the given value.
@@ -22,13 +22,13 @@
  *
  *  @return The constructed ZSNewTileNode.
  */
-+(ZSNewTileNode*)nodeWithValue:(int)value;
++ (ZSNewTileNode *)nodeWithValue:(int)value;
 
 /**
  *  Returns an actual ZSTileNode (row = 1).
  *
  *  @return The actual on board ZSTileNode.
  */
--(ZSTileNode*)toRealTile;
+- (ZSTileNode *)toRealTile;
 
 @end

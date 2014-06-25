@@ -9,35 +9,33 @@
 #import "ZSChain.h"
 
 @implementation ZSChain {
-    NSMutableArray *chain;
+  NSMutableArray *chain;
 }
 
--(ZSChain*)init {
-    self = [super init];
-    
+- (ZSChain *)init {
+  if (self = [super init]) {
     chain = [[NSMutableArray alloc] init];
     _runningSum = 0;
-    
-    return self;
+  }
+  return self;
 }
 
--(void)addTile:(ZSTileNode*)tile {
-    [chain addObject:tile];
-    _runningSum += tile.value;
+- (void)addTile:(ZSTileNode *)tile {
+  [chain addObject:tile];
+  _runningSum += tile.value;
 }
 
--(ZSTileNode*)lastTile {
-    return [chain lastObject];
+- (ZSTileNode *)lastTile {
+  return [chain lastObject];
 }
 
--(ZSTileNode*)popTile {
-    if([chain count] == 0)
-        return nil;
-    
-    ZSTileNode* ret = [chain lastObject];
-    [chain removeLastObject];
-    _runningSum += -1 * ret.value;
-    return ret;
+- (ZSTileNode *)popTile {
+  if ([chain count] == 0) return nil;
+
+  ZSTileNode *ret = [chain lastObject];
+  [chain removeLastObject];
+  _runningSum += -1 * ret.value;
+  return ret;
 }
 
 @end

@@ -10,9 +10,9 @@
 
 @implementation ZSUtility
 
-+(int)randomValue {
-    int value = arc4random_uniform(8) + 1;
-    return (rand() % 2) == 1 ? 0 - value : value;
++ (int)randomValue {
+  int value = arc4random_uniform(8) + 1;
+  return (rand() % 2) == 1 ? 0 - value : value;
 }
 
 @end

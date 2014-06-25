@@ -14,7 +14,7 @@
 /**
  *  Current sum of the chain.
  */
-@property (atomic, readonly) int runningSum;
+@property(atomic, readonly) int runningSum;
 
 /**
  *  Creates and returns a new chain.
@@ -22,27 +22,27 @@
  *
  *  @return The constructed chain.
  */
--(ZSChain*)init;
+- (ZSChain *)init;
 
 /**
  *  Adds a tile to the chain.
  *
  *  @param tile The tile to add.
  */
--(void)addTile:(ZSTileNode*)tile;
+- (void)addTile:(ZSTileNode *)tile;
 
 /**
  *  Stack order removes the last added tile.
  *
  *  @return The removed tile.
  */
--(ZSTileNode*)popTile;
+- (ZSTileNode *)popTile;
 
 /**
  *  Returns a reference to the last tile.
  *
  *  @return The last tile in the chain.
  */
--(ZSTileNode*)lastTile;
+- (ZSTileNode *)lastTile;
 
 @end

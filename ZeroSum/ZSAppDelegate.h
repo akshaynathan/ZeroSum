@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZSAppDelegate : UIResponder <UIApplicationDelegate>
+@interface ZSAppDelegate : UIResponder<UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property(strong, nonatomic) UIWindow *window;
 
 @end

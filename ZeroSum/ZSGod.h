@@ -15,8 +15,8 @@
 
 @interface ZSGod : NSObject
 
-@property (atomic, readonly) ZSBoardNode* gameboard;
-@property (atomic, readonly) ZSScore* score;
+@property(atomic, readonly) ZSBoardNode *gameboard;
+@property(atomic, readonly) ZSScore *score;
 
 /**
  *  Create a God object with a given board.
@@ -25,24 +25,24 @@
  *
  *  @return The constructed ZSGod.
  */
--(ZSGod*)initWithBoard:(ZSBoardNode*)board;
+- (ZSGod *)initWithBoard:(ZSBoardNode *)board;
 
 /**
  *  Start the game.
  */
--(void)start;
+- (void)start;
 
 /**
  *  Adds the tile to the chain if its a valid next tile.
  *  Returns the tile or nil if it cant be added.
  */
--(ZSTileNode*)addTileToChain:(ZSTileNode*)tile;
+- (ZSTileNode *)addTileToChain:(ZSTileNode *)tile;
 
 /**
  *  Clears the chain, updates the score if the sum is 0.
  *  Returns the sum of the chain.
  */
--(int)clearChain;
+- (int)clearChain;
 
 /**
  *  Makes a new tile node into a real tile.
@@ -52,6 +52,6 @@
  *
  *  @return The tile that the new tile becomes.
  */
--(ZSTileNode*)transitionNewTile:(ZSNewTileNode*)t;
+- (ZSTileNode *)transitionNewTile:(ZSNewTileNode *)t;
 
 @end

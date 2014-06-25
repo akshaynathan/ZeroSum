@@ -11,42 +11,38 @@
 
 @implementation ZSViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void)viewDidLoad {
+  [super viewDidLoad];
 
-    // Configure the view.
-    SKView * skView = (SKView *)self.view;
-    
-    // Create and configure the scene.
-    SKScene * scene = [ZSGameScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    scene.backgroundColor = [UIColor whiteColor];
-    
-    // Present the scene.
-    [skView presentScene:scene];
+  // Configure the view.
+  SKView *skView = (SKView *)self.view;
+
+  // Create and configure the scene.
+  SKScene *scene = [ZSGameScene sceneWithSize:skView.bounds.size];
+  scene.scaleMode = SKSceneScaleModeAspectFill;
+  scene.backgroundColor = [UIColor whiteColor];
+
+  // Present the scene.
+  [skView presentScene:scene];
 }
 
 // The game is only played in landscape mode
-- (BOOL)shouldAutorotate
-{
-    return NO;
+- (BOOL)shouldAutorotate {
+  return NO;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
+- (NSUInteger)supportedInterfaceOrientations {
+  return UIInterfaceOrientationMaskPortrait;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    NSLog(@"Memory Warning! This shouldn't happen.");
+- (void)didReceiveMemoryWarning {
+  [super didReceiveMemoryWarning];
+  NSLog(@"Memory Warning! This shouldn't happen.");
 }
 
 // Hide the status bar
 - (BOOL)prefersStatusBarHidden {
-    return YES;
+  return YES;
 }
 
 @end

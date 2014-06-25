@@ -9,34 +9,33 @@
 #import "ZSScore.h"
 
 @implementation ZSScore {
-    SKLabelNode *scoreNode;
+  SKLabelNode *scoreNode;
 }
 
--(id)init {
-    self = [super init];
+- (id)init {
+  if (self = [super init]) {
     _score = 0;
-    
+
     scoreNode = [SKLabelNode node];
     scoreNode.text = @"0";
     scoreNode.fontSize = 24;
-    scoreNode.horizontalAlignmentMode =
-        SKLabelHorizontalAlignmentModeCenter;
+    scoreNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
     scoreNode.fontName = @"TimesNewRoman";
     scoreNode.fontColor = [UIColor blackColor];
     [self addChild:scoreNode];
-    
-    return self;
+  }
+
+  return self;
 }
 
-+(int)calculateScoreForLevel:(int)level andChainLength:(int)length {
-    return level + (length * 10);
++ (int)calculateScoreForLevel:(int)level andChainLength:(int)length {
+  return level + (length * 10);
 }
 
-
--(int)updateScore:(int)amount {
-    _score += amount;
-    scoreNode.text = [NSString stringWithFormat:@"%d", _score];
-    return _score;
+- (int)updateScore:(int)amount {
+  _score += amount;
+  scoreNode.text = [NSString stringWithFormat:@"%d", _score];
+  return _score;
 }
 
 @end

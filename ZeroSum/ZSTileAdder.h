@@ -16,8 +16,8 @@
  *  These properties can be modified atomically while the
  *  tileadder is running.
  */
-@property (atomic, readwrite) double addDuration;
-@property (atomic, readwrite) double emergeDuration;
+@property(atomic, readwrite) double addDuration;
+@property(atomic, readwrite) double emergeDuration;
 
 /**
  *  Init the tile adder with the given board.
@@ -26,15 +26,14 @@
  *
  *  @return The constructed tileadder.
  */
--(ZSTileAdder*)initWithGod:(ZSGod*)god;
+- (ZSTileAdder *)initWithGod:(ZSGod *)god;
 
 /**
  *  Start the tileadder after the given waitTime.
  *
  *  @param waitTime The time to wait before adding the first tile.
  */
--(void)start:(double)waitTime;
-
+- (void)start:(double)waitTime;
 
 /**
  *  If the tile backlog has items, this will add the first new tile
@@ -42,6 +41,6 @@
  *
  *  @param column The column to add the new tile to.
  */
--(void)clearQueue:(int)column;
+- (void)clearQueue:(int)column;
 
 @end

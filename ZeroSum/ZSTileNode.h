@@ -11,8 +11,8 @@
 
 @interface ZSTileNode : SKSpriteNode
 
-@property (atomic, readwrite) int row, column;
-@property (atomic, readonly) int value;
+@property(atomic, readwrite) int row, column;
+@property(atomic, readonly) int value;
 
 /**
  *  Returns a ZSTileNode with the given value.
@@ -21,7 +21,7 @@
  *
  *  @return The constructed ZSTileNode.
  */
-+(ZSTileNode*)nodeWithValue:(int)value;
++ (ZSTileNode *)nodeWithValue:(int)value;
 
 /**
  *  Add a connection to the other tile. Does nothing if the other
@@ -29,13 +29,13 @@
  *
  *  @param next The tile to connect to.
  */
--(void)connectTo:(ZSTileNode*)next;
+- (void)connectTo:(ZSTileNode *)next;
 
 /**
  *  Disconnect the tile. Does not do anything if the tile is not
  *  connected.
  */
--(void)disconnect;
+- (void)disconnect;
 
 /**
  *  Check's if this tile neighbors the other tile.
@@ -45,7 +45,7 @@
  *
  *  @return YES or NO depending on whether the tiles are neighbors.
  */
--(BOOL)isNeighborsWith:(ZSTileNode*)other;
+- (BOOL)isNeighborsWith:(ZSTileNode *)other;
 
 /**
  *  Is the tile already in a chain? Note that this method will
@@ -54,6 +54,6 @@
  *
  *  @return YES if the tile is connected already, no otherwise.
  */
--(BOOL)isConnected;
+- (BOOL)isConnected;
 
 @end

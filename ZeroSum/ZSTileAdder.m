@@ -13,25 +13,26 @@
 #import "ZSGod.h"
 
 @implementation ZSTileAdder {
-    ZSGod *god;
-    NSTimer *addNextTile;
-    NSTimer *emergeTimers[8];
-    NSMutableArray *tilesBackLog;
+  ZSGod *god;
+  NSTimer *addNextTile;
+  NSTimer *emergeTimers[8];
+  NSMutableArray *tilesBackLog;
 }
 
--(ZSTileAdder*)initWithGod:(ZSGod*)g {
-    self = [super init];
+- (ZSTileAdder *)initWithGod:(ZSGod *)g {
+  if (self = [super init]) {
     god = g;
     tilesBackLog = [[NSMutableArray alloc] init];
-    return self;
+  }
+  return self;
 }
 
--(void)start:(double)waitTime {
-    addNextTile = [NSTimer scheduledTimerWithTimeInterval:waitTime
-                                                   target:self
-                                                 selector:@selector(addNewTile)
-                                                 userInfo:nil
-                                                  repeats:NO];
+- (void)start:(double)waitTime {
+  addNextTile = [NSTimer scheduledTimerWithTimeInterval:waitTime
+                                                 target:self
+                                               selector:@selector(addNewTile)
+                                               userInfo:nil
+                                                repeats:NO];
 }
 
 /**
@@ -41,25 +42,25 @@
  *
  *  @return The new tile that was added.
  */
--(ZSNewTileNode*)addNewTile {
-    ZSNewTileNode *n = [ZSNewTileNode nodeWithValue:[ZSUtility randomValue]];
-    int new_column = [god.gameboard getFreeColumn];
-    if(new_column == -1) {
-        // Add tile to queue for later
-        // TODO: Add tests for the queue.
-        [tilesBackLog addObject:n];
-    } else {
-        [god.gameboard addNewTile:n atColumn:new_column];
-        emergeTimers[n.column] = [self addEmergeTimer:n];
-    }
-    
-    // Reset timer
-    addNextTile = [NSTimer scheduledTimerWithTimeInterval:_addDuration
-                                                      target:self
-                                                    selector:@selector(addNewTile)
-                                                    userInfo:nil
-                                                     repeats:NO];
-    return n;
+- (ZSNewTileNode *)addNewTile {
+  ZSNewTileNode *n = [ZSNewTileNode nodeWithValue:[ZSUtility randomValue]];
+  int new_column = [god.gameboard getFreeColumn];
+  if (new_column == -1) {
+    // Add tile to queue for later
+    // TODO: Add tests for the queue.
+    [tilesBackLog addObject:n];
+  } else {
+    [god.gameboard addNewTile:n atColumn:new_column];
+    emergeTimers[n.column] = [self addEmergeTimer:n];
+  }
+
+  // Reset timer
+  addNextTile = [NSTimer scheduledTimerWithTimeInterval:_addDuration
+                                                 target:self
+                                               selector:@selector(addNewTile)
+                                               userInfo:nil
+                                                repeats:NO];
+  return n;
 }
 
 /**
@@ -69,12 +70,12 @@
  *
  *  @return The created timer.
  */
--(NSTimer*)addEmergeTimer:(ZSNewTileNode*)n {
-    return [NSTimer scheduledTimerWithTimeInterval:_emergeDuration
-                                            target:self
-                                          selector:@selector(emergeTile:)
-                                          userInfo:n
-                                           repeats:NO];
+- (NSTimer *)addEmergeTimer:(ZSNewTileNode *)n {
+  return [NSTimer scheduledTimerWithTimeInterval:_emergeDuration
+                                          target:self
+                                        selector:@selector(emergeTile:)
+                                        userInfo:n
+                                         repeats:NO];
 }
 
 /**
@@ -82,8 +83,8 @@
  *
  *  @param t The timer.
  */
--(void)emergeTile:(NSTimer*)t {
-    [god transitionNewTile:(ZSNewTileNode*)t.userInfo];
+- (void)emergeTile:(NSTimer *)t {
+  [god transitionNewTile:(ZSNewTileNode *)t.userInfo];
 }
 
 /**
@@ -92,12 +93,12 @@
  *
  *  @param column The column to add the new tile to.
  */
--(void)clearQueue:(int)column {
-    if([tilesBackLog count] != 0) {
-        ZSNewTileNode *k = [tilesBackLog objectAtIndex:0];
-        [tilesBackLog removeObjectAtIndex:0];
-        [god.gameboard addNewTile:k atColumn:column];
-    }
+- (void)clearQueue:(int)column {
+  if ([tilesBackLog count] != 0) {
+    ZSNewTileNode *k = [tilesBackLog objectAtIndex:0];
+    [tilesBackLog removeObjectAtIndex:0];
+    [god.gameboard addNewTile:k atColumn:column];
+  }
 }
 
 @end
