@@ -16,6 +16,7 @@
 
 @implementation ZSGameScene {
   ZSGod *god;
+  SKEffectNode *rootNode;
 }
 
 /**
@@ -23,14 +24,17 @@
  */
 - (id)initWithSize:(CGSize)size {
   if (self = [super initWithSize:size]) {
+    rootNode = [SKEffectNode node];
+
     ZSBoardNode *gameboard = [self createBoard];
     god = [[ZSGod alloc] initWithBoard:gameboard];
     ZSScore *score = god.score;
     score.position =
         CGPointMake(SCREEN_WIDTH / 2,
                     BOTTOM_BUFFER + TILE_SIZE * BOARD_ROWS + SCORE_BUFFER);
-    [self addChild:score];
+    [rootNode addChild:score];
     [god start];
+    [self addChild:rootNode];
   }
   return self;
 }
@@ -42,7 +46,7 @@
   ZSBoardNode *b = [ZSBoardNode node];
   b.position =
       CGPointMake(SCREEN_WIDTH / 2, TILE_SIZE * BOARD_ROWS / 2 + BOTTOM_BUFFER);
-  [self addChild:b];
+  [rootNode addChild:b];
   return b;
 }
 
