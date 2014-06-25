@@ -14,6 +14,8 @@
 
 @interface ZSGod : NSObject
 
+@property (atomic, readonly) ZSBoardNode* gameboard;
+
 /**
  *  Create a God object with a given board.
  *
@@ -39,12 +41,6 @@
  *  Returns the sum of the chain.
  */
 -(int)clearChain;
-
-/**
- *  Adds a new tile and schedules the next addition.
- *  If the tile cannot be added, it is placed in the queue.
- */
--(ZSNewTileNode*)addNewTile;
 
 /**
  *  Makes a new tile node into a real tile.
