@@ -18,6 +18,7 @@
 #define BOARD_ROWS 12
 #define BOTTOM_BUFFER TILE_SIZE + 4
 #define SQUARE_SIZE (TILE_SIZE - 4)
+#define SCORE_BUFFER 10
 
 // Game Dynamics
 #define STARTING_TILES 5

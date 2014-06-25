@@ -11,6 +11,8 @@
 		8C1640801952A8B400536D05 /* ZSGodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16407F1952A8B400536D05 /* ZSGodTest.m */; };
 		8C5667C7195A563600B3B975 /* ZSTileAdder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5667C6195A563600B3B975 /* ZSTileAdder.m */; };
 		8C5667C9195A65F900B3B975 /* ZSTileAdderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5667C8195A65F900B3B975 /* ZSTileAdderTest.m */; };
+		8C5667CC195A6A2500B3B975 /* ZSScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5667CB195A6A2500B3B975 /* ZSScore.m */; };
+		8C5667CE195A6EBE00B3B975 /* ZSScoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5667CD195A6EBE00B3B975 /* ZSScoreTest.m */; };
 		8C6AB8C319358DD500530AC5 /* ZSTileNodeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */; };
 		8C6AB8C51935A73700530AC5 /* ZSChainTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6AB8C41935A73700530AC5 /* ZSChainTest.m */; };
 		8C70F06F19009ABE0062A93B /* ZSTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C70F06E19009ABE0062A93B /* ZSTileNode.m */; };
@@ -53,6 +55,9 @@
 		8C5667C5195A563600B3B975 /* ZSTileAdder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSTileAdder.h; sourceTree = "<group>"; };
 		8C5667C6195A563600B3B975 /* ZSTileAdder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileAdder.m; sourceTree = "<group>"; };
 		8C5667C8195A65F900B3B975 /* ZSTileAdderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileAdderTest.m; sourceTree = "<group>"; };
+		8C5667CA195A6A2500B3B975 /* ZSScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSScore.h; sourceTree = "<group>"; };
+		8C5667CB195A6A2500B3B975 /* ZSScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSScore.m; sourceTree = "<group>"; };
+		8C5667CD195A6EBE00B3B975 /* ZSScoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSScoreTest.m; sourceTree = "<group>"; };
 		8C6AB8C219358DD500530AC5 /* ZSTileNodeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSTileNodeTest.m; sourceTree = "<group>"; };
 		8C6AB8C41935A73700530AC5 /* ZSChainTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSChainTest.m; sourceTree = "<group>"; };
 		8C70F06D19009ABE0062A93B /* ZSTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSTileNode.h; sourceTree = "<group>"; };
@@ -168,6 +173,8 @@
 				8CB98C931941776F0082115A /* ZSNewTileNode.m */,
 				8C5667C5195A563600B3B975 /* ZSTileAdder.h */,
 				8C5667C6195A563600B3B975 /* ZSTileAdder.m */,
+				8C5667CA195A6A2500B3B975 /* ZSScore.h */,
+				8C5667CB195A6A2500B3B975 /* ZSScore.m */,
 				8CF8743718EE3FF600E8473D /* Images.xcassets */,
 				8CF8742118EE3FF600E8473D /* Supporting Files */,
 			);
@@ -194,6 +201,7 @@
 				8C6AB8C41935A73700530AC5 /* ZSChainTest.m */,
 				8C16407F1952A8B400536D05 /* ZSGodTest.m */,
 				8C5667C8195A65F900B3B975 /* ZSTileAdderTest.m */,
+				8C5667CD195A6EBE00B3B975 /* ZSScoreTest.m */,
 				8CF8744518EE3FF600E8473D /* Supporting Files */,
 			);
 			path = ZeroSumTests;
@@ -314,6 +322,7 @@
 				8C70F06F19009ABE0062A93B /* ZSTileNode.m in Sources */,
 				8CF8745618EE422A00E8473D /* ZSBoardNode.m in Sources */,
 				8C70F0721900CF050062A93B /* ZSChain.m in Sources */,
+				8C5667CC195A6A2500B3B975 /* ZSScore.m in Sources */,
 				8CBDC4AD1901FF4100D46608 /* ZSUtility.m in Sources */,
 				8C16407C195018F500536D05 /* ZSGod.m in Sources */,
 			);
@@ -329,6 +338,7 @@
 				8C1640801952A8B400536D05 /* ZSGodTest.m in Sources */,
 				8C6AB8C51935A73700530AC5 /* ZSChainTest.m in Sources */,
 				8C7ED1D8192C3F5B00A22DD5 /* ZSBoardNodeTest.m in Sources */,
+				8C5667CE195A6EBE00B3B975 /* ZSScoreTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

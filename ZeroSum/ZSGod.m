@@ -13,6 +13,7 @@
 #import "ZSChain.h"
 #import "ZSNewTileNode.h"
 #import "ZSTileAdder.h"
+#import "ZSScore.h"
 
 @implementation ZSGod {
     ZSChain *chain;
@@ -24,6 +25,7 @@
     _gameboard = board;
     chain = [[ZSChain alloc] init];
     tileAdder = [[ZSTileAdder alloc] initWithGod:self];
+    _score = [[ZSScore alloc] init];
     return self;
 }
 
@@ -32,6 +34,9 @@
     [self initStartingTiles];
     
     // Start the tileAdder
+    // TODO: Make this part of the level manager
+    tileAdder.emergeDuration = 5.0;
+    tileAdder.addDuration = 10.0;
     [tileAdder start:GRACE_PERIOD];
 }
 
@@ -66,10 +71,14 @@
 -(int)clearChain {
     int sum = [chain runningSum];
     if(sum == 0) {
+        int length = 0;
         while([chain lastTile] != nil) {
             ZSTileNode *t = [chain popTile];
             [_gameboard removeTileAtColumn:t.column andRow:t.row];
+            length += 1;
         }
+        // TODO: Integrate this with level manager
+        [_score updateScore:[ZSScore calculateScoreForLevel:1 andChainLength:length]];
     } else {
         while([chain lastTile] != nil) {
             ZSTileNode *t = [chain popTile];

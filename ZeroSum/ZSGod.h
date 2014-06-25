@@ -11,10 +11,12 @@
 @class ZSBoardNode;
 @class ZSTileNode;
 @class ZSNewTileNode;
+@class ZSScore;
 
 @interface ZSGod : NSObject
 
 @property (atomic, readonly) ZSBoardNode* gameboard;
+@property (atomic, readonly) ZSScore* score;
 
 /**
  *  Create a God object with a given board.
