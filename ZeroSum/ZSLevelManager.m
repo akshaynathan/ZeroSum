@@ -11,15 +11,15 @@
 @implementation ZSLevelManager
 
 static LevelData levelData[] = {{10.0, 5.0},
-                                {8.0, 5.0},
-                                {8.0, 4.0},
-                                {6.0, 4.0},
-                                {6.0, 3.0},
-                                {4.0, 3.0},
-                                {4.0, 2.0},
-                                {2.0, 2.0},
-                                {2.0, 1.0},
-                                {2.0, 1.0}};
+                                {5.0, 5.0},
+                                {3.0, 4.0},
+                                {2.0, 3.0},
+                                {1.0, 2.0},
+                                {0.8, 1.0},
+                                {0.6, 1.0},
+                                {0.5, 1.0},
+                                {0.25, 1.0},
+                                {0.125, 1.0}};
 
 - (id)init {
   if (self = [super init]) {
@@ -42,8 +42,8 @@ static LevelData levelData[] = {{10.0, 5.0},
  *  @return The correct level.
  */
 - (int)calculateNewLevelForScore:(int)score andChains:(int)chains {
-  int c = 1 + chains / 10;
-  int s = score > 0 ? 1 + log2(score) / 5 : 0;
+  int c = 1 + chains / 5;
+  int s = score > 0 ? 1 + log2(score) / 2 : 0;
   return MIN(ceil((c + s) / 2), 10);
 }
 

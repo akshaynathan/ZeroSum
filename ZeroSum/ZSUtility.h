@@ -18,19 +18,19 @@
 #define BOARD_ROWS 12
 #define BOTTOM_BUFFER TILE_SIZE + 4
 #define SQUARE_SIZE (TILE_SIZE - 4)
-#define SCORE_BUFFER 10
+#define SCORE_BUFFER 12
 #define CENTER_BUFFER 10
 
 // Game Dynamics
-#define STARTING_TILES 5
+#define STARTING_TILES 6
 #define GRACE_PERIOD 5.0
-#define SUGGEST_BUFFER 3
+#define SUGGEST_BUFFER 9
 
 // Animation
 #define UPWARD_SHIFT_DURATION 0.3
 #define DOWNWARD_SHIFT_DURATION 0.5
 #define NEW_TILE_FADE_DURATION 0.2
-#define SCORE_UPDATE 0.5
+#define SCORE_UPDATE 0.2
 
 // Debugging and logging
 #define DEBUG 1
