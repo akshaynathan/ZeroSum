@@ -30,6 +30,7 @@
 #define UPWARD_SHIFT_DURATION 0.3
 #define DOWNWARD_SHIFT_DURATION 0.5
 #define NEW_TILE_FADE_DURATION 0.2
+#define SCORE_UPDATE 0.5
 
 // Debugging and logging
 #define DEBUG 1

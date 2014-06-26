@@ -31,6 +31,8 @@
   [score updateScore:15];
   XCTAssert(score.score == 30, "ZSScore should add updateValue to score.");
   SKLabelNode *scoreNode = [score.children firstObject];
+  [[NSRunLoop currentRunLoop]
+      runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2.0]];
   XCTAssert([scoreNode.text isEqualToString:@"30"]);
 }
 

@@ -113,7 +113,7 @@
   int suggestion = [god suggestNewTileValue];
   int newSum = board.totalSum + suggestion;
   XCTAssert(abs(0 - newSum) < abs(0 - board.totalSum) ||
-                abs(board.totalSum - newSum) < SUGGEST_BUFFER,
+                abs(board.totalSum - newSum) <= SUGGEST_BUFFER,
             "suggestNewTileValue should move totalSum towards 0.");
 }
 
