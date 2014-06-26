@@ -13,6 +13,8 @@
 
 @interface ZSBoardNode : SKSpriteNode
 
+@property(atomic, readonly) int totalSum;
+
 /**
  *  Builds a board node.
  *

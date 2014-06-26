@@ -30,6 +30,7 @@
       [tiles addObject:[[NSMutableArray alloc] init]];
       new_tiles[i] = nil;
     }
+    _totalSum = 0;
   }
   return self;
 }
@@ -90,6 +91,9 @@
   // Insert the tile into the grid
   [column_array insertObject:tile atIndex:tile.row];
 
+  // Add the tile value to total sum
+  _totalSum += tile.value;
+
   // Shift up the other tile
   int i = tile.row + 1;
   while (i < [column_array count]) {
@@ -119,6 +123,9 @@
 
   // Remove the object from the grid
   [column_array removeObjectAtIndex:row];
+
+  // subtract value from _totalSum
+  _totalSum -= n.value;
 
   // Delete the tile from the board
   [n removeFromParent];

@@ -43,7 +43,7 @@
  *  @return The new tile that was added.
  */
 - (ZSNewTileNode *)addNewTile {
-  ZSNewTileNode *n = [ZSNewTileNode nodeWithValue:[ZSUtility randomValue]];
+  ZSNewTileNode *n = [ZSNewTileNode nodeWithValue:[god suggestNewTileValue]];
   int new_column = [god.gameboard getFreeColumn];
   if (new_column == -1) {
     // Add tile to queue for later

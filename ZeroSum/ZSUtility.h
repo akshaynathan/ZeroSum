@@ -24,6 +24,7 @@
 // Game Dynamics
 #define STARTING_TILES 5
 #define GRACE_PERIOD 5.0
+#define SUGGEST_BUFFER 3
 
 // Animation
 #define UPWARD_SHIFT_DURATION 0.3

@@ -92,6 +92,14 @@
   return sum;
 }
 
+- (int)suggestNewTileValue {
+  int necessary = 0 - _gameboard.totalSum;
+  int suggestion = arc4random_uniform(SUGGEST_BUFFER) + necessary;
+  suggestion = MAX(suggestion, -9);
+  suggestion = MIN(suggestion, 9);
+  return suggestion;
+}
+
 /**
  *  Update the level and set the durations.
  */

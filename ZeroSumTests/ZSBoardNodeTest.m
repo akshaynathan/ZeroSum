@@ -80,6 +80,8 @@
   [self checkPosition:k];
   //[self checkPosition:p];
 
+  XCTAssert(board.totalSum == 21, "addTile should change totalSum.");
+
   // Adding tile off the grid should not do anything
   k = [board addTile:[ZSTileNode nodeWithValue:4] atColumn:9 andRow:10];
   XCTAssertNil(k, "addTile should return nil for locations off the grid.");
@@ -99,6 +101,7 @@
   [t connectTo:[board tileAtColumn:0 andRow:2]];
 
   t = [board removeTileAtColumn:0 andRow:1];
+  XCTAssert(board.totalSum == 8, "removeTile should change totalSum.");
   XCTAssert(t.value == 4, "removeTile is removing the wrong tile.");
   XCTAssert([board tileAtColumn:0 andRow:1].value == 3,
             "removeTile should shift down other tiles.");

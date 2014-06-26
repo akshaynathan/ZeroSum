@@ -58,4 +58,11 @@
  */
 - (ZSTileNode *)transitionNewTile:(ZSNewTileNode *)t;
 
+/**
+ *  Suggests a new tile value given the current board state.
+ *
+ *  @return The value for the tile.
+ */
+- (int)suggestNewTileValue;
+
 @end
