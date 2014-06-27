@@ -59,7 +59,7 @@
   // We will then assure that clearChain does not delete the column
   // with only the first tile, but does when the second tile is added.
   int value = 0;
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < STARTING_TILES; i++) {
     ZSTileNode *t = [god addTileToChain:[board tileAtColumn:0 andRow:i]];
     value += t.value;
   }
@@ -67,10 +67,16 @@
   int newTile = -9;
   while (value + newTile == 0) newTile++;
 
-  [board addTile:[ZSTileNode nodeWithValue:newTile] atColumn:0 andRow:5];
+  [board addTile:[ZSTileNode nodeWithValue:newTile]
+        atColumn:0
+          andRow:STARTING_TILES];
 
   int endTile = 0 - (newTile + value);
-  [board addTile:[ZSTileNode nodeWithValue:endTile] atColumn:0 andRow:6];
+  [board addTile:[ZSTileNode nodeWithValue:endTile]
+        atColumn:0
+          andRow:STARTING_TILES + 1];
+
+  [god.gameboard printArray];
 
   [god addTileToChain:[board tileAtColumn:0 andRow:5]];
   int sum = [god clearChain];
@@ -81,7 +87,7 @@
   XCTAssert([[board tileAtColumn:0 andRow:0] isConnected] != YES,
             "clearChain should remove connections");
 
-  for (int i = 0; i < 7; i++) {
+  for (int i = 0; i < STARTING_TILES + 2; i++) {
     [god addTileToChain:[board tileAtColumn:0 andRow:i]];
   }
 

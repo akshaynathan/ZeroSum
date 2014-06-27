@@ -93,4 +93,9 @@
  */
 - (int)getFreeColumn;
 
+/**
+ *  Prints out the 2d array of tiles.
+ */
+- (void)printArray;
+
 @end

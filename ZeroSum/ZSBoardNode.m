@@ -85,6 +85,7 @@
 
   // Set the tile position
   tile.row = (int)MIN([column_array count], row);  // Tile falls down
+
   tile.column = col;
   [tile setPosition:[self getPositionForTile:tile]];
 
@@ -264,7 +265,7 @@
  *  Prints the 2d array contents (tiles by value) to stdout.
  */
 - (void)printArray {
-  for (int i = BOARD_ROWS; i > 1; i--) {
+  for (int i = BOARD_ROWS - 1; i >= 0; i--) {
     for (int k = 0; k < BOARD_COLUMNS; k++) {
       NSMutableArray *p = [tiles objectAtIndex:k];
 
