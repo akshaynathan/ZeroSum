@@ -33,6 +33,17 @@
   [super tearDown];
 }
 
+- (void)testStart {
+  XCTAssert(god.state == RUNNING, "start should change god state to running.");
+
+  for (int i = 0; i < BOARD_COLUMNS; i++) {
+    for (int k = 0; k < STARTING_TILES; k++) {
+      XCTAssert([god.gameboard tileAtColumn:i andRow:k] != nil,
+                "start should add init tiles.");
+    }
+  }
+}
+
 - (void)testAddTileToChain {
   ZSTileNode *initial = [board tileAtColumn:0 andRow:0];
   ZSTileNode *next = [god addTileToChain:initial];
@@ -76,8 +87,6 @@
         atColumn:0
           andRow:STARTING_TILES + 1];
 
-  [god.gameboard printArray];
-
   [god addTileToChain:[board tileAtColumn:0 andRow:5]];
   int sum = [god clearChain];
   XCTAssert(sum != 0, "Non-clearable chain should return non zero sum.");
@@ -113,6 +122,17 @@
   XCTAssert(f == nil,
             "transitionNewTile should not transition a tile that is already "
             "emerging");
+
+  for (int i = 0; i < BOARD_ROWS - STARTING_TILES; i++) {
+    ZSTileNode *t = [ZSTileNode nodeWithValue:5];
+    [board addTile:t atColumn:3 andRow:i];
+  }
+
+  k = [ZSNewTileNode nodeWithValue:5];
+  [board addNewTile:k atColumn:3];
+  [god transitionNewTile:k];
+  XCTAssert(god.state == STOPPED,
+            "transitionNewTile should check for gameover.");
 }
 
 - (void)testSuggestNewTileValue {

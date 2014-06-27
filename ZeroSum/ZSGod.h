@@ -17,10 +17,13 @@
 
 @interface ZSGod : NSObject
 
+enum STATE { PAUSED, STOPPED, RUNNING };
+
 @property(atomic, readonly) ZSChain *chain;
 @property(atomic, readonly) ZSBoardNode *gameboard;
 @property(atomic, readonly) ZSScore *score;
 @property(atomic, readonly) ZSLevelManager *levelMan;
+@property(atomic, readonly) enum STATE state;
 
 /**
  *  Create a God object with a given board.

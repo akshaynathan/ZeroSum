@@ -43,4 +43,9 @@
  */
 - (void)clearQueue:(int)column;
 
+/**
+ *  Stops adding tiles, also stops tiles from emerging.
+ */
+- (void)stop;
+
 @end

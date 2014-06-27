@@ -15,7 +15,7 @@
 @implementation ZSTileAdder {
   ZSGod *god;
   NSTimer *addNextTile;
-  NSTimer *emergeTimers[8];
+  NSTimer *emergeTimers[BOARD_COLUMNS];
   NSMutableArray *tilesBackLog;
 }
 
@@ -61,6 +61,13 @@
                                                userInfo:nil
                                                 repeats:NO];
   return n;
+}
+
+- (void)stop {
+  [addNextTile invalidate];
+  for (int i = 0; i < BOARD_COLUMNS; i++) {
+    [emergeTimers[i] invalidate];
+  }
 }
 
 /**

@@ -35,6 +35,8 @@
 }
 
 - (void)start {
+  _state = RUNNING;
+
   // Create starting tiles
   [self initStartingTiles];
 
@@ -115,6 +117,11 @@
   // Do not transition a tile that is already emerging
   if (t.isEmerging == YES) return nil;
 
+  // Check if the game is over
+  if ([_gameboard tileAtColumn:t.column andRow:BOARD_ROWS - 1] != nil) {
+    [self gameOver];
+  }
+
   ZSTileNode *ret = [t toRealTile];
 
   // Break any chains that should be broken
@@ -142,6 +149,14 @@
           [tileAdder clearQueue:ret.column];
       }];
   return ret;
+}
+
+/**
+ *  Just a helper method to call [gamescene gameover];
+ */
+- (void)gameOver {
+  _state = STOPPED;
+  [tileAdder stop];
 }
 
 /**
