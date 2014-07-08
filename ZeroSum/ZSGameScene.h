@@ -10,4 +10,9 @@
 
 @interface ZSGameScene : SKScene
 
+/**
+ *  Transitions to the game over scene.
+ */
+- (void)gameOver;
+
 @end

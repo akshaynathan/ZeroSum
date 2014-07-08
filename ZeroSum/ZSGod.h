@@ -14,6 +14,7 @@
 @class ZSScore;
 @class ZSLevelManager;
 @class ZSChain;
+@class ZSGameScene;
 
 @interface ZSGod : NSObject
 
@@ -29,10 +30,11 @@ enum STATE { PAUSED, STOPPED, RUNNING };
  *  Create a God object with a given board.
  *
  *  @param board The game board.
+ *  @param gamescene The Scene the game board belongs to.
  *
  *  @return The constructed ZSGod.
  */
-- (ZSGod *)initWithBoard:(ZSBoardNode *)board;
+- (ZSGod *)initWithBoard:(ZSBoardNode *)board inScene:(ZSGameScene *)gamescene;
 
 /**
  *  Start the game.

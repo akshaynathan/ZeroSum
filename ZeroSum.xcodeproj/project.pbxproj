@@ -208,9 +208,9 @@
 				8C6AB8C41935A73700530AC5 /* ZSChainTest.m */,
 				8C16407F1952A8B400536D05 /* ZSGodTest.m */,
 				8C5667C8195A65F900B3B975 /* ZSTileAdderTest.m */,
+				8C5667D2195A7B8600B3B975 /* ZSLevelManagerTest.m */,
 				8C5667CD195A6EBE00B3B975 /* ZSScoreTest.m */,
 				8CF8744518EE3FF600E8473D /* Supporting Files */,
-				8C5667D2195A7B8600B3B975 /* ZSLevelManagerTest.m */,
 			);
 			path = ZeroSumTests;
 			sourceTree = "<group>";

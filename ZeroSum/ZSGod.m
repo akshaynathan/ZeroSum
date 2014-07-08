@@ -15,18 +15,21 @@
 #import "ZSTileAdder.h"
 #import "ZSScore.h"
 #import "ZSLevelManager.h"
+#import "ZSGameScene.h"
 
 @implementation ZSGod {
   ZSTileAdder *tileAdder;
+  ZSGameScene *scene;
   int currentLevel;
   int chains;
 }
 
-- (ZSGod *)initWithBoard:(ZSBoardNode *)board {
+- (ZSGod *)initWithBoard:(ZSBoardNode *)board inScene:(ZSGameScene *)gamescene {
   if (self = [super init]) {
     _gameboard = board;
     _chain = [[ZSChain alloc] init];
     tileAdder = [[ZSTileAdder alloc] initWithGod:self];
+    scene = gamescene;
     _score = [[ZSScore alloc] init];
     _levelMan = [[ZSLevelManager alloc] init];
     chains = 0;
@@ -41,9 +44,7 @@
   [self initStartingTiles];
 
   // Start the tileAdder
-  // TODO: Make this part of the level manager
-  tileAdder.emergeDuration = 5.0;
-  tileAdder.addDuration = 10.0;
+  [self updateLevel];
   [tileAdder start:GRACE_PERIOD];
 }
 
@@ -60,6 +61,9 @@
 }
 
 - (ZSTileNode *)addTileToChain:(ZSTileNode *)tile {
+  // Don't do anything if the game is already stopped.
+  if (_state == STOPPED) return nil;
+
   // No repeats
   if (tile == [_chain lastTile]) return nil;
 
@@ -84,7 +88,6 @@
       length += 1;
     }
     chains++;
-    // TODO: Integrate this with level manager
     [_score updateScore:[ZSScore calculateScoreForLevel:currentLevel
                                          andChainLength:length]];
     [self updateLevel];
@@ -117,9 +120,14 @@
   // Do not transition a tile that is already emerging
   if (t.isEmerging == YES) return nil;
 
+  // Don't do anything if the game is over.
+  // This should never happen b/c we delete all the timers.
+  if (_state == STOPPED) return nil;
+
   // Check if the game is over
   if ([_gameboard tileAtColumn:t.column andRow:BOARD_ROWS - 1] != nil) {
     [self gameOver];
+    return nil;
   }
 
   ZSTileNode *ret = [t toRealTile];
@@ -156,7 +164,10 @@
  */
 - (void)gameOver {
   _state = STOPPED;
+  // Stop adding tiles
   [tileAdder stop];
+  // End the game scene
+  [scene gameOver];
 }
 
 /**

@@ -10,7 +10,7 @@
 
 @implementation ZSLevelManager
 
-static LevelData levelData[] = {{10.0, 5.0},
+static LevelData levelData[] = {{0.5, 0.5},
                                 {5.0, 5.0},
                                 {3.0, 4.0},
                                 {2.0, 3.0},
@@ -44,7 +44,7 @@ static LevelData levelData[] = {{10.0, 5.0},
 - (int)calculateNewLevelForScore:(int)score andChains:(int)chains {
   int c = 1 + chains / 5;
   int s = score > 0 ? 1 + log2(score) / 2 : 0;
-  return MIN(ceil((c + s) / 2), 10);
+  return MAX(1, MIN(ceil((c + s) / 2), 10));
 }
 
 @end

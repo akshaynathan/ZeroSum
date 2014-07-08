@@ -27,7 +27,7 @@
     rootNode = [SKEffectNode node];
 
     ZSBoardNode *gameboard = [self createBoard];
-    god = [[ZSGod alloc] initWithBoard:gameboard];
+    god = [[ZSGod alloc] initWithBoard:gameboard inScene:self];
     ZSScore *score = god.score;
     score.position =
         CGPointMake(SCREEN_WIDTH / 2,
@@ -37,6 +37,16 @@
     [self addChild:rootNode];
   }
   return self;
+}
+
+- (void)gameOver {
+  // Blur the game scene.
+  [rootNode setShouldEnableEffects:YES];
+  [rootNode setShouldRasterize:YES];
+  [rootNode setFilter:[CIFilter filterWithName:@"CIGaussianBlur"
+                                 keysAndValues:@"inputRadius", @5.0f, nil]];
+
+  // Display the game over menu
 }
 
 /**
@@ -88,7 +98,14 @@
  * Manages touch end events
  */
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-  [god clearChain];
+  UITouch *t = [touches anyObject];
+  NSArray *nodes = [self nodesAtPoint:[t locationInNode:self]];
+  for (SKNode *n in nodes) {
+    if ([n isKindOfClass:[ZSTileNode class]]) {
+      [god clearChain];
+      break;
+    }
+  }
 }
 
 - (void)update:(CFTimeInterval)currentTime {

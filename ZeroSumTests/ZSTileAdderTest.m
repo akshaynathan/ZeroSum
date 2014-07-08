@@ -23,7 +23,7 @@
 
 - (void)setUp {
   [super setUp];
-  god = [[ZSGod alloc] initWithBoard:[ZSBoardNode node]];
+  god = [[ZSGod alloc] initWithBoard:[ZSBoardNode node] inScene:nil];
   t = [[ZSTileAdder alloc] initWithGod:god];
   t.addDuration = 0.1;
   t.emergeDuration = 0.1;

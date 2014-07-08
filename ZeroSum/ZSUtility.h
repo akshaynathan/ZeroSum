@@ -23,7 +23,7 @@
 
 // Game Dynamics
 #define STARTING_TILES 6
-#define GRACE_PERIOD 5.0
+#define GRACE_PERIOD 0
 #define SUGGEST_BUFFER 9
 
 // Animation

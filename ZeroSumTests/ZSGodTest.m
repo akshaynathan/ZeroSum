@@ -25,7 +25,7 @@
 - (void)setUp {
   [super setUp];
   board = [ZSBoardNode node];
-  god = [[ZSGod alloc] initWithBoard:board];
+  god = [[ZSGod alloc] initWithBoard:board inScene:nil];
   [god start];
 }
 
@@ -130,9 +130,11 @@
 
   k = [ZSNewTileNode nodeWithValue:5];
   [board addNewTile:k atColumn:3];
-  [god transitionNewTile:k];
+  f = [god transitionNewTile:k];
   XCTAssert(god.state == STOPPED,
             "transitionNewTile should check for gameover.");
+  XCTAssertNil(
+      f, "transitionNewTile shouldnt transition a tile when the game is over.");
 }
 
 - (void)testSuggestNewTileValue {
