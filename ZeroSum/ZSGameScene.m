@@ -25,20 +25,35 @@
 - (id)initWithSize:(CGSize)size {
   if (self = [super initWithSize:size]) {
     rootNode = [SKEffectNode node];
-
-    ZSBoardNode *gameboard = [self createBoard];
-    god = [[ZSGod alloc] initWithBoard:gameboard inScene:self];
-    ZSScore *score = god.score;
-    score.position =
-        CGPointMake(SCREEN_WIDTH / 2,
-                    BOTTOM_BUFFER + TILE_SIZE * BOARD_ROWS + SCORE_BUFFER);
-    [rootNode addChild:score];
-    [god start];
     [self addChild:rootNode];
+    [self restartScene];
   }
   return self;
 }
 
+/**
+ *  Generates the scene on start/restart.
+ */
+- (void)restartScene {
+  // If we are actually restarting remove all children
+  [self removeAllChildren];
+  [rootNode removeAllChildren];
+  rootNode.filter = NULL;
+  [rootNode setShouldEnableEffects:NO];
+  [self addChild:rootNode];
+
+  ZSBoardNode *gameboard = [self createBoard];
+  god = [[ZSGod alloc] initWithBoard:gameboard inScene:self];
+  ZSScore *score = god.score;
+  score.position = CGPointMake(
+      SCREEN_WIDTH / 2, BOTTOM_BUFFER + TILE_SIZE * BOARD_ROWS + SCORE_BUFFER);
+  [rootNode addChild:score];
+  [god start];
+}
+
+/**
+ *  Runs game over actions.
+ */
 - (void)gameOver {
   // Blur the game scene.
   [rootNode setShouldEnableEffects:YES];
@@ -47,6 +62,35 @@
                                  keysAndValues:@"inputRadius", @5.0f, nil]];
 
   // Display the game over menu
+  [self addChild:[self gameOverMenu]];
+}
+
+/**
+ *  Generates the game over menu.
+ *
+ *  @return The game over menu in a node.
+ */
+- (SKNode *)gameOverMenu {
+  SKNode *gameOverRoot = [SKNode node];
+  gameOverRoot.position = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+
+  // Game Over text
+  SKLabelNode *go = [SKLabelNode labelNodeWithFontNamed:@"Verdana"];
+  go.text = @"GAME OVER";
+  go.fontSize = 25;
+  go.fontColor = [UIColor blackColor];
+  [gameOverRoot addChild:go];
+
+  // Restart button
+  SKLabelNode *restart = [SKLabelNode labelNodeWithFontNamed:@"Verdana"];
+  restart.text = @"restart";
+  restart.fontSize = 20;
+  restart.fontColor = [UIColor blackColor];
+  restart.position = CGPointMake(0, -40);
+  restart.name = @"restartButton";
+  [gameOverRoot addChild:restart];
+
+  return gameOverRoot;
 }
 
 /**
@@ -73,6 +117,10 @@
     }
     if ([n isKindOfClass:[ZSNewTileNode class]]) {
       [god transitionNewTile:(ZSNewTileNode *)n];
+      break;
+    }
+    if ([n.name isEqualToString:@"restartButton"]) {
+      [self restartScene];
       break;
     }
   }
