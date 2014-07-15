@@ -17,9 +17,10 @@
 #define BOARD_COLUMNS 8
 #define BOARD_ROWS 12
 #define BOTTOM_BUFFER TILE_SIZE + 4
-#define SQUARE_SIZE (TILE_SIZE - 4)
+#define SQUARE_SIZE (TILE_SIZE - 6)
 #define SCORE_BUFFER 12
 #define CENTER_BUFFER 10
+#define TILE_EDGE 4
 
 // Game Dynamics
 #define STARTING_TILES 6
@@ -32,6 +33,14 @@
 #define NEW_TILE_FADE_DURATION 0.2
 #define SCORE_UPDATE 0.2
 
+// Aesthetics
+#define SCORE_COLOR 0xFCB03C
+#define GRID_COLOR 0x068587
+#define NEGATIVE_COLOR 0xFC5B3F
+#define POSITIVE_COLOR 0x112F41
+#define VALUE_COLOR 0x000000
+#define CONNECTOR_COLOR 0xFCB03C
+
 // Debugging and logging
 #define DEBUG 1
 #ifdef DEBUG
@@ -42,6 +51,13 @@
 #else
 #define DEBUG_LOG(s, ...)
 #endif
+
+// Color from hex string
+#define UIColorFromRGB(rgbValue)                                       \
+  [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 \
+                  green:((float)((rgbValue & 0xFF00) >> 8)) / 255.0    \
+                   blue:((float)(rgbValue & 0xFF)) / 255.0             \
+                  alpha:1.0]
 
 @interface ZSUtility : NSObject
 

@@ -48,8 +48,8 @@
   CGPathAddLineToPoint(k, NULL, next.position.x + SQUARE_SIZE / 2,
                        next.position.y + SQUARE_SIZE / 2);
   conn.path = k;
-  conn.strokeColor = [UIColor blackColor];
-  conn.lineWidth = 1;
+  conn.strokeColor = UIColorFromRGB(CONNECTOR_COLOR);
+  conn.lineWidth = 3;
 
   connector = conn;  // Set this node to connected.
 
@@ -89,17 +89,23 @@
  */
 // TODO: Replace with sprite.
 - (void)draw {
-  SKShapeNode *s = [SKShapeNode node];
-  s.path =
-      CGPathCreateWithRect(CGRectMake(0, 0, SQUARE_SIZE, SQUARE_SIZE), NULL);
-  s.position = CGPointMake(1, 1);
-  s.strokeColor = _value < 0 ? [UIColor redColor] : [UIColor greenColor];
+  int final_size = SQUARE_SIZE - TILE_EDGE / 2;
 
-  SKLabelNode *l = [SKLabelNode node];
+  SKShapeNode *s = [SKShapeNode node];
+  s.path = CGPathCreateWithRoundedRect(CGRectMake(0, 0, final_size, final_size),
+                                       2, 2, nil);
+  s.position = CGPointMake(1, 1);
+  s.strokeColor = _value < 0 ? UIColorFromRGB(NEGATIVE_COLOR)
+                             : UIColorFromRGB(POSITIVE_COLOR);
+  s.lineWidth = 3;
+
+  SKLabelNode *l = [SKLabelNode labelNodeWithFontNamed:@"Menlo"];
   l.text = [NSString stringWithFormat:@"%d", abs(_value)];
-  l.fontSize = SQUARE_SIZE / 2;
-  l.position = CGPointMake(SQUARE_SIZE / 2, SQUARE_SIZE / 4);
-  l.fontColor = [UIColor blackColor];
+  l.fontSize = final_size - TILE_EDGE;
+  l.position = CGPointMake(final_size / 2, final_size / 2);
+  l.fontColor = s.strokeColor;
+  l.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+  l.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
   [s addChild:l];
 
   [self addChild:s];

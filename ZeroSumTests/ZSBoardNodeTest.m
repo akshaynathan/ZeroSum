@@ -29,8 +29,10 @@
  *  Checks that the tile is at the right position. (Eventually)
  */
 - (void)checkPosition:(ZSTileNode *)tile {
-  double correct_x = tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE) / 2;
-  double correct_y = tile.row * TILE_SIZE - (BOARD_ROWS * TILE_SIZE) / 2;
+  double correct_x = tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE) / 2 +
+                     (TILE_SIZE - SQUARE_SIZE) / 2;
+  double correct_y = tile.row * TILE_SIZE - (BOARD_ROWS * TILE_SIZE) / 2 +
+                     (TILE_SIZE - SQUARE_SIZE) / 2;
 
   // Since we are not operating in the context of a scene, there
   // is no animation loop. Thus, we need to make sure that the action

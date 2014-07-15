@@ -41,8 +41,10 @@
  *  @param tile The tile to set position of.
  */
 - (CGPoint)getPositionForTile:(ZSTileNode *)tile {
-  return CGPointMake(tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE) / 2,
-                     tile.row * TILE_SIZE - (BOARD_ROWS * TILE_SIZE) / 2);
+  return CGPointMake(tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE) / 2 +
+                         (TILE_SIZE - SQUARE_SIZE) / 2,
+                     tile.row * TILE_SIZE - (BOARD_ROWS * TILE_SIZE) / 2 +
+                         (TILE_SIZE - SQUARE_SIZE) / 2);
 }
 
 /**
@@ -255,7 +257,7 @@
 
   SKShapeNode *grid = [SKShapeNode node];
   grid.path = p;
-  grid.strokeColor = [UIColor blackColor];
+  grid.strokeColor = UIColorFromRGB(GRID_COLOR);
   grid.antialiased = NO;
   grid.lineWidth = 1;
   [self addChild:grid];

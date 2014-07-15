@@ -25,7 +25,7 @@
     scoreNode.fontSize = 24;
     scoreNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
     scoreNode.fontName = @"TimesNewRoman";
-    scoreNode.fontColor = [UIColor blackColor];
+    scoreNode.fontColor = UIColorFromRGB(SCORE_COLOR);
     [self addChild:scoreNode];
   }
 
