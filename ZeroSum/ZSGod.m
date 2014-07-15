@@ -136,7 +136,7 @@
   int i = 0;
   ZSTileNode *check = [_gameboard tileAtColumn:t.column andRow:i];
   while (check != nil) {
-    if ([check isConnected]) {
+    if ([check isConnected] || check == [_chain lastTile]) {
       [self deleteChain];
       break;
     }

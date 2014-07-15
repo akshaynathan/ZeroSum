@@ -109,8 +109,8 @@
 - (void)testTransitionNewTile {
   ZSNewTileNode *k = [ZSNewTileNode nodeWithValue:5];
   [board addNewTile:k atColumn:2];
-  [god addTileToChain:[board tileAtColumn:2 andRow:3]];
   [god addTileToChain:[board tileAtColumn:3 andRow:3]];
+  [god addTileToChain:[board tileAtColumn:2 andRow:3]];
 
   ZSTileNode *f = [god transitionNewTile:k];
   XCTAssert(f == [board tileAtColumn:2 andRow:0],
