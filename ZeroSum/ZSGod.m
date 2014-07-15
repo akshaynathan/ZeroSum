@@ -98,11 +98,12 @@
 }
 
 - (int)suggestNewTileValue {
+  int possibility = [ZSUtility randomValue];
   int necessary = 0 - _gameboard.totalSum;
-  int suggestion = arc4random_uniform(SUGGEST_BUFFER) + necessary;
-  suggestion = MAX(suggestion, -9);
-  suggestion = MIN(suggestion, 9);
-  return suggestion;
+  while (possibility == 0) {
+    possibility += arc4random_uniform(9) * necessary / ABS(necessary);
+  }
+  return MIN(MAX(possibility, -9), 9);
 }
 
 /**

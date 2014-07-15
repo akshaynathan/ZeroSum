@@ -225,7 +225,7 @@
 
   int length = (int)[sortedArray count];
   for (int i = 0; i < length; i++) {
-    if (rand() % 10 > 3 || i == length - 1) {
+    if (rand() % 10 > 5 || i == length - 1) {
       return [[sortedArray objectAtIndex:i] intValue];
     }
   }
