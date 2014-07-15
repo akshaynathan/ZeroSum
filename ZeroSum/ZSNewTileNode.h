@@ -31,4 +31,10 @@
  */
 - (ZSTileNode *)toRealTile;
 
+/**
+ *  Start the border animation.
+ *
+ *  @param duration The time before the new tile emerges.
+ */
+- (void)startAnimation:(double)duration;
 @end

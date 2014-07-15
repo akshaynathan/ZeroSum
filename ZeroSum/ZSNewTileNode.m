@@ -9,7 +9,9 @@
 #import "ZSNewTileNode.h"
 #import "ZSUtility.h"
 
-@implementation ZSNewTileNode
+@implementation ZSNewTileNode {
+  SKShapeNode *border;
+}
 
 + (ZSNewTileNode *)nodeWithValue:(int)value {
   ZSNewTileNode *ret = [[ZSNewTileNode alloc] initWithValue:value];
@@ -40,30 +42,73 @@
   return ret;
 }
 
+- (void)startAnimation:(double)duration {
+  // We want to draw a dotted line
+  double sideLength = (SQUARE_SIZE - TILE_EDGE / 2);
+  [self runAction:[SKAction customActionWithDuration:duration
+                                         actionBlock:^(SKNode *node,
+                                                       CGFloat elapsedTime) {
+                                             double ratio =
+                                                 elapsedTime / duration;
+                                             int drawDouble =
+                                                 (int)(ratio * sideLength * 4);
+                                             [self animatePath:border
+                                                    withLength:drawDouble];
+                                         }]];
+}
+
 /**
  *  Draws the actual (new) tile.
  */
 // TODO: Replace with sprite.
 - (void)draw {
-  SKShapeNode *s = [SKShapeNode node];
+  border = [SKShapeNode node];
+  border.strokeColor = [UIColor blackColor];
+  border.position = CGPointMake(1, 1);
+  border.strokeColor = _value < 0 ? UIColorFromRGB(NEGATIVE_COLOR)
+                                  : UIColorFromRGB(POSITIVE_COLOR);
 
-  // We want to draw a dotted line
-  CGPathRef k =
-      CGPathCreateWithRect(CGRectMake(0, 0, SQUARE_SIZE, SQUARE_SIZE), NULL);
-  CGFloat pattern[] = {2, 7};
-  CGPathRef dashed = CGPathCreateCopyByDashingPath(k, NULL, 0, pattern, 2);
-  s.path = dashed;
-  s.position = CGPointMake(1, 1);
-  s.strokeColor = _value < 0 ? [UIColor redColor] : [UIColor greenColor];
-
-  SKLabelNode *l = [SKLabelNode node];
+  double sideLength = (SQUARE_SIZE - TILE_EDGE / 2);
+  SKLabelNode *l = [SKLabelNode labelNodeWithFontNamed:@"Menlo"];
   l.text = [NSString stringWithFormat:@"%d", abs(_value)];
-  l.fontSize = SQUARE_SIZE / 2;
-  l.position = CGPointMake(SQUARE_SIZE / 2, SQUARE_SIZE / 4);
-  l.fontColor = [UIColor blackColor];
-  [s addChild:l];
+  l.fontSize = sideLength - TILE_EDGE;
+  l.position = CGPointMake(sideLength / 2, sideLength / 2);
+  l.fontColor = border.strokeColor;
+  l.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+  l.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+  [border addChild:l];
 
-  [self addChild:s];
+  [self addChild:border];
+}
+
+// Returns a CGPathRef for the node animation
+- (void)animatePath:(SKShapeNode *)s withLength:(double)drawLength {
+  int sideLength = SQUARE_SIZE - TILE_EDGE / 2;
+  CGMutablePathRef k = CGPathCreateMutable();
+  CGPathMoveToPoint(k, NULL, 0, sideLength);
+  int i = 0;
+  if (drawLength > 0) {
+    i = MIN(sideLength, drawLength);
+    CGPathAddLineToPoint(k, NULL, i, sideLength);
+    drawLength -= i;
+  }
+  if (drawLength > 0) {
+    i = MIN(sideLength, drawLength);
+    CGPathAddLineToPoint(k, NULL, sideLength, sideLength - i);
+    drawLength -= i;
+  }
+  if (drawLength > 0) {
+    i = MIN(sideLength, drawLength);
+    CGPathAddLineToPoint(k, NULL, sideLength - i, 0);
+    drawLength -= i;
+  }
+  if (drawLength > 0) {
+    i = MIN(sideLength, drawLength);
+    CGPathAddLineToPoint(k, NULL, 0, i);
+    drawLength -= i;
+  }
+  s.path = k;
+  CGPathRelease(k);
 }
 
 @end

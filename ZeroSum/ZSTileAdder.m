@@ -52,6 +52,7 @@
   } else {
     [god.gameboard addNewTile:n atColumn:new_column];
     emergeTimers[n.column] = [self addEmergeTimer:n];
+    [n startAnimation:_emergeDuration];
   }
 
   // Reset timer
