@@ -131,9 +131,10 @@
 
   XCTAssert(p == k, "addNewTile should add the tile to the column.");
 
-  XCTAssert(
-      p.position.x == p.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE) / 2,
-      "addNewTile should set the position for the tile");
+  XCTAssert(p.position.x ==
+                p.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE) / 2 +
+                    (TILE_SIZE - SQUARE_SIZE) / 2,
+            "addNewTile should set the position for the tile");
 
   XCTAssert(p.column == 4, "addNewTile should set column of new tile.");
 
