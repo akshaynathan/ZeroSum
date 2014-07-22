@@ -11,50 +11,79 @@
 
 @implementation ZSScore {
   SKLabelNode *scoreNode;
-  NSTimer *scoreUpdateTimer;
-  int currentScoreText;
+  double startingScore, finalScore, currentScore;
+  CFTimeInterval endTime;
 }
 
 - (id)init {
   if (self = [super init]) {
     _score = 0;
-    currentScoreText = 0;
+    finalScore = 0;
+    startingScore = 0;
+    currentScore = 0;
+    endTime = 0;
 
-    scoreNode = [SKLabelNode node];
-    scoreNode.text = @"0";
-    scoreNode.fontSize = 24;
-    scoreNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
-    scoreNode.fontName = @"TimesNewRoman";
-    scoreNode.fontColor = UIColorFromRGB(SCORE_COLOR);
-    [self addChild:scoreNode];
+    [self draw];
   }
 
   return self;
 }
 
 + (int)calculateScoreForLevel:(int)level andChainLength:(int)length {
-  return level + (length * 10);
+  return LEVEL_MULTIPLIER * level + LENGTH_MULTIPLIER * length;
 }
 
-- (int)updateScore:(int)amount {
+- (int)addScore:(int)amount {
+  [self animateScore];
+
+  // Set current and final scores for the update method.
+  startingScore = _score;
   _score += amount;
-  // scoreNode.text = [NSString stringWithFormat:@"%d", _score];
-  scoreUpdateTimer =
-      [NSTimer scheduledTimerWithTimeInterval:SCORE_UPDATE / amount
-                                       target:self
-                                     selector:@selector(updateScoreText)
-                                     userInfo:nil
-                                      repeats:YES];
+  finalScore = _score;
+  endTime += UPDATE_TIME;
   return _score;
 }
 
-- (void)updateScoreText {
-  if (currentScoreText == _score) {
-    [scoreUpdateTimer invalidate];
+- (void)updateScore:(CFTimeInterval)now {
+  if (currentScore == finalScore) {
+    endTime = now;
     return;
   }
-  currentScoreText = currentScoreText + 1;
-  scoreNode.text = [NSString stringWithFormat:@"%d", currentScoreText];
+  if (now >= endTime) {
+    currentScore = finalScore;
+  } else {
+    // Calculate how far we've gone and update the score based on
+    // how much time is left.
+    double progress = 1 - ((endTime - now) / UPDATE_TIME);
+    currentScore =
+        ceil(startingScore + (progress * (finalScore - startingScore)));
+  }
+  scoreNode.text = [NSString stringWithFormat:@"%d", (int)currentScore];
+}
+
+// This animation runs on every score update
+- (void)animateScore {
+  SKAction *sizeUp = [SKAction scaleBy:SCALE_FACTOR duration:SCALE_TIME / 2];
+  sizeUp.timingMode = SKActionTimingEaseOut;
+  SKAction *sizeDown =
+      [SKAction scaleBy:1 / SCALE_FACTOR duration:SCALE_TIME / 2];
+  sizeDown.timingMode = SKActionTimingEaseOut;
+  [scoreNode runAction:[SKAction sequence:@[ sizeUp, sizeDown ]]];
+}
+
+/**
+ *  Draws the initial score text.
+ */
+- (void)draw {
+  scoreNode = [SKLabelNode node];
+  scoreNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+
+  scoreNode.fontSize = SCORE_FONT_SIZE;
+  scoreNode.fontName = SCORE_FONT_NAME;
+  scoreNode.fontColor = UIColorFromRGB(SCORE_COLOR);
+
+  scoreNode.text = @"0";
+  [self addChild:scoreNode];
 }
 
 @end

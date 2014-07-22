@@ -236,7 +236,6 @@
 /**
  *  Draws the board
  */
-// TODO: Replace the manual drawing with a sprite.
 - (void)draw {
   // Draw Board (to be replaced with image)
   int base_y = 0 - (TILE_SIZE * BOARD_ROWS / 2);

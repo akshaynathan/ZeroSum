@@ -34,7 +34,6 @@
 #define SCORE_UPDATE 0.2
 
 // Aesthetics
-#define SCORE_COLOR 0x000000
 #define GRID_COLOR 0x000000
 #define NEGATIVE_COLOR 0x334D5C
 #define POSITIVE_COLOR 0xDF4949

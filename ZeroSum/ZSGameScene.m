@@ -157,7 +157,8 @@
 }
 
 - (void)update:(CFTimeInterval)currentTime {
-  /* Called before each frame is rendered */
+  // Update the score
+  [god.score updateScore:currentTime];
 }
 
 @end

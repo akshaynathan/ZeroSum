@@ -23,17 +23,13 @@
   [super tearDown];
 }
 
-- (void)testUpdateScore {
+- (void)testAddScore {
   ZSScore *score = [[ZSScore alloc] init];
-  XCTAssert(score.score == 0, "New ZSScore should have 0 for score value.");
-  [score updateScore:15];
-  XCTAssert(score.score == 15, "ZSScore should add updateValue to score.");
-  [score updateScore:15];
-  XCTAssert(score.score == 30, "ZSScore should add updateValue to score.");
-  SKLabelNode *scoreNode = [score.children firstObject];
-  [[NSRunLoop currentRunLoop]
-      runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2.0]];
-  XCTAssert([scoreNode.text isEqualToString:@"30"]);
+  XCTAssert(score.score == 0, "Score should be initialized to 0.");
+  [score addScore:15];
+  XCTAssert(score.score == 15, "addScore should update score.");
+  [score addScore:15];
+  XCTAssert(score.score == 30, "addScore should update score.");
 }
 
 @end

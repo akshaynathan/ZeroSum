@@ -60,7 +60,6 @@
 /**
  *  Draws the actual (new) tile.
  */
-// TODO: Replace with sprite.
 - (void)draw {
   border = [SKShapeNode node];
   border.strokeColor = [UIColor blackColor];
@@ -81,7 +80,13 @@
   [self addChild:border];
 }
 
-// Returns a CGPathRef for the node animation
+/**
+ *  Adds a CGPath to the border of the shape.
+ *
+ *  @param s          The ShapeNode to border.
+ *  @param drawLength The length of the path.
+ */
+// TODO: Add tests for this.
 - (void)animatePath:(SKShapeNode *)s withLength:(double)drawLength {
   int sideLength = SQUARE_SIZE - TILE_EDGE / 2;
   CGMutablePathRef k = CGPathCreateMutable();

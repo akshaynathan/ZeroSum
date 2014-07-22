@@ -88,8 +88,8 @@
       length += 1;
     }
     chains++;
-    [_score updateScore:[ZSScore calculateScoreForLevel:currentLevel
-                                         andChainLength:length]];
+    [_score addScore:[ZSScore calculateScoreForLevel:currentLevel
+                                      andChainLength:length]];
     [self updateLevel];
   } else {
     [self deleteChain];

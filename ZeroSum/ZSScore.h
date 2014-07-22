@@ -8,6 +8,24 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+// The color of the score text.
+#define SCORE_COLOR 0x000000
+
+// Font of the score text
+#define SCORE_FONT_NAME @"Menlo-Regular"
+#define SCORE_FONT_SIZE 26
+
+// Multipliers for score calculation
+#define LEVEL_MULTIPLIER 3
+#define LENGTH_MULTIPLIER 10
+
+// Time it takes for score to fully update
+#define UPDATE_TIME 0.5
+
+// Scaling of score settings
+#define SCALE_FACTOR 1.2
+#define SCALE_TIME 0.5
+
 @interface ZSScore : SKNode
 
 @property(atomic, readonly) int score;
@@ -23,12 +41,21 @@
 + (int)calculateScoreForLevel:(int)level andChainLength:(int)length;
 
 /**
- *  Updates the score by incrementing by the update val.
+ *  Increases the score by amount.
  *
  *  @param update The amount to increment by.
  *
  *  @return Returns the new score.
  */
-- (int)updateScore:(int)amount;
+- (int)addScore:(int)amount;
+
+/**
+ *  Called in the update method of the gamescene. This
+ *  will update the actual score text so we can have the incremental
+ *  counter animation.
+ *
+ *  @param now The current time.
+ */
+- (void)updateScore:(CFTimeInterval)now;
 
 @end
