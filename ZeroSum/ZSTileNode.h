@@ -9,6 +9,11 @@
 #import <SpriteKit/SpriteKit.h>
 #import "ZSBoardNode.h"
 
+// How deep into the node the connector goes
+#define CONNECTOR_BUFFER 8
+// Width of connector line
+#define CONNECTOR_WIDTH 4
+
 @interface ZSTileNode : SKSpriteNode
 
 @property(atomic, readwrite) int row, column;

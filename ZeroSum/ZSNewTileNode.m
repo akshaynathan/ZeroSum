@@ -51,7 +51,8 @@
                                              double ratio =
                                                  elapsedTime / duration;
                                              int drawDouble =
-                                                 (int)(ratio * sideLength * 4);
+                                                 (int)(ratio * sideLength *
+                                                       4.0);
                                              [self animatePath:border
                                                     withLength:drawDouble];
                                          }]];

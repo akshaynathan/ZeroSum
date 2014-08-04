@@ -10,16 +10,20 @@
 
 @implementation ZSLevelManager
 
-static LevelData levelData[] = {{5.0, 5.0},
-                                {4.0, 5.0},
-                                {4.0, 4.0},
-                                {3.0, 4.0},
-                                {3.0, 3.0},
-                                {2.0, 3.0},
-                                {2.0, 2.0},
-                                {1.0, 2.0},
-                                {1.0, 1.0},
-                                {0.5, 1.0}};
+/**
+ *  This holds the levelData values for each level.
+ *  Use this to adjust game difficulty.
+ */
+static LevelData levelData[] = {{3.0, 12.0},
+                                {3.0, 10.0},
+                                {2.0, 10.0},
+                                {2.0, 9.0},
+                                {2.0, 8.0},
+                                {2.0, 8.0},
+                                {1.0, 8.0},
+                                {1.0, 6.0},
+                                {1.0, 5.0},
+                                {0.5, 4.0}};
 
 - (id)init {
   if (self = [super init]) {
@@ -42,8 +46,8 @@ static LevelData levelData[] = {{5.0, 5.0},
  *  @return The correct level.
  */
 - (int)calculateNewLevelForScore:(int)score andChains:(int)chains {
-  int c = 1 + chains / 5;
-  int s = score > 0 ? 1 + log2(score) / 2 : 0;
+  int c = sqrt(chains);  // 25 chains = level 5, 100 chains = level 10
+  int s = score > 0 ? log2(score / 2) : 1;
   return MAX(1, MIN(ceil((c + s) / 2), 10));
 }
 

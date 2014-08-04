@@ -39,20 +39,37 @@
     return;
   }
 
-  // TODO: Replace connector with sprite.
+  [self drawConnector:next];
+}
+
+/**
+ *  Draws the connector the next tile node.
+ *
+ *  @param next The next tile node.
+ */
+- (void)drawConnector:(ZSTileNode *)next {
   SKShapeNode *conn = [SKShapeNode node];
 
   CGMutablePathRef k = CGPathCreateMutable();
-  CGPathMoveToPoint(k, NULL, self.position.x + SQUARE_SIZE / 2,
-                    self.position.y + SQUARE_SIZE / 2);
-  CGPathAddLineToPoint(k, NULL, next.position.x + SQUARE_SIZE / 2,
-                       next.position.y + SQUARE_SIZE / 2);
-  conn.path = k;
+  CGPathMoveToPoint(
+      k, NULL,
+      self.position.x + SQUARE_SIZE / 2 +
+          ((next.column - _column) * ((SQUARE_SIZE / 2) - CONNECTOR_BUFFER)),
+      self.position.y + SQUARE_SIZE / 2 +
+          ((next.row - _row) * ((SQUARE_SIZE / 2) - CONNECTOR_BUFFER)));
+  CGPathAddLineToPoint(
+      k, NULL,
+      next.position.x + SQUARE_SIZE / 2 +
+          ((_column - next.column) * ((SQUARE_SIZE / 2) - CONNECTOR_BUFFER)),
+      next.position.y + SQUARE_SIZE / 2 +
+          ((_row - next.row) * ((SQUARE_SIZE / 2) - CONNECTOR_BUFFER)));
+
   conn.strokeColor = UIColorFromRGB(CONNECTOR_COLOR);
-  conn.lineWidth = 3;
+  conn.lineWidth = CONNECTOR_WIDTH;
+  conn.path = k;
+  CGPathRelease(k);
 
-  connector = conn;  // Set this node to connected.
-
+  connector = conn;
   [self.parent addChild:connector];
 }
 
