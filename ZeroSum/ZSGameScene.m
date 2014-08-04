@@ -149,7 +149,9 @@
   UITouch *t = [touches anyObject];
   NSArray *nodes = [self nodesAtPoint:[t locationInNode:self]];
   for (SKNode *n in nodes) {
-    if ([n isKindOfClass:[ZSTileNode class]]) {
+    // Check if we end on a tile OR in the space between them.
+    if ([n isKindOfClass:[ZSTileNode class]] ||
+        [n isKindOfClass:[ZSBoardNode class]]) {
       [god clearChain];
       break;
     }
