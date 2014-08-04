@@ -51,18 +51,14 @@
   SKShapeNode *conn = [SKShapeNode node];
 
   CGMutablePathRef k = CGPathCreateMutable();
+  CGFloat center = SQUARE_SIZE / 2;
+  CGFloat buffer = center - CONNECTOR_BUFFER;
   CGPathMoveToPoint(
-      k, NULL,
-      self.position.x + SQUARE_SIZE / 2 +
-          ((next.column - _column) * ((SQUARE_SIZE / 2) - CONNECTOR_BUFFER)),
-      self.position.y + SQUARE_SIZE / 2 +
-          ((next.row - _row) * ((SQUARE_SIZE / 2) - CONNECTOR_BUFFER)));
+      k, NULL, self.position.x + center + ((next.column - _column) * buffer),
+      self.position.y + center + ((next.row - _row) * buffer));
   CGPathAddLineToPoint(
-      k, NULL,
-      next.position.x + SQUARE_SIZE / 2 +
-          ((_column - next.column) * ((SQUARE_SIZE / 2) - CONNECTOR_BUFFER)),
-      next.position.y + SQUARE_SIZE / 2 +
-          ((_row - next.row) * ((SQUARE_SIZE / 2) - CONNECTOR_BUFFER)));
+      k, NULL, next.position.x + center + ((_column - next.column) * buffer),
+      next.position.y + center + ((_row - next.row) * buffer));
 
   conn.strokeColor = UIColorFromRGB(CONNECTOR_COLOR);
   conn.lineWidth = CONNECTOR_WIDTH;
