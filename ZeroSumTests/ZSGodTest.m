@@ -12,6 +12,7 @@
 #import "ZSTileNode.h"
 #import "ZSNewTileNode.h"
 #import "ZSChain.h"
+#import "ZSScore.h"
 
 @interface ZSGodTest : XCTestCase
 
@@ -89,8 +90,12 @@
 
   [god addTileToChain:[board tileAtColumn:0 andRow:5]];
   int sum = [god clearChain];
+  int currentScore = god.score.score;
+
   XCTAssert(sum != 0, "Non-clearable chain should return non zero sum.");
   XCTAssert([god clearChain] == 0, "Empty chain should return 0 sum.");
+  XCTAssert(god.score.score == currentScore,
+            "Empty chain should not update score.");
   XCTAssertNotNil([board tileAtColumn:0 andRow:0],
                   "Non Zero chain should not delete tiles.");
   XCTAssert([[board tileAtColumn:0 andRow:0] isConnected] != YES,

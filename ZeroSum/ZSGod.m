@@ -80,7 +80,7 @@
 
 - (int)clearChain {
   int sum = [_chain runningSum];
-  if (sum == 0) {
+  if (sum == 0 && [_chain lastTile] != nil) {
     int length = 0;
     while ([_chain lastTile] != nil) {
       ZSTileNode *t = [_chain popTile];
