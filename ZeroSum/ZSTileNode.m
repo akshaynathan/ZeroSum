@@ -70,14 +70,8 @@
 }
 
 - (BOOL)isNeighborsWith:(ZSTileNode *)other {
-  return (other.column == _column + 1 && other.row == _row) ||
-         (other.column == _column - 1 && other.row == _row) ||
-         (other.column == _column && other.row == _row + 1) ||
-         (other.column == _column && other.row == _row - 1) ||
-         (other.column == _column + 1 && other.row == _row - 1) ||
-         (other.column == _column + 1 && other.row == _row + 1) ||
-         (other.column == _column - 1 && other.row == _row - 1) ||
-         (other.column == _column - 1 && other.row == _row + 1);
+  return (ABS(other.column - _column) <= 1 && ABS(other.row - _row) <= 1) &&
+         !((other.row == _row) && (other.column == _column));
 }
 
 - (BOOL)isConnected {
@@ -100,7 +94,6 @@
 /**
  *  Draws the actual tile.
  */
-// TODO: Replace with sprite.
 - (void)draw {
   int final_size = SQUARE_SIZE - TILE_EDGE / 2;
 
