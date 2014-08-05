@@ -258,6 +258,7 @@
 
   SKShapeNode *grid = [SKShapeNode node];
   grid.path = p;
+  CGPathRelease(p);
   grid.strokeColor = UIColorFromRGB(GRID_COLOR);
   grid.antialiased = NO;
   grid.lineWidth = 1;
@@ -265,6 +266,7 @@
 }
 
 /**
+ *  For Debugging.
  *  Prints the 2d array contents (tiles by value) to stdout.
  */
 - (void)printArray {
