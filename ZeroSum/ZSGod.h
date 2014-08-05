@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+// Game Dynamics
+#define STARTING_TILES 6
+#define GRACE_PERIOD 5.0
+#define SUGGEST_BUFFER 9
+
 @class ZSBoardNode;
 @class ZSTileNode;
 @class ZSNewTileNode;

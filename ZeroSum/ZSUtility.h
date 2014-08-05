@@ -22,11 +22,6 @@
 #define CENTER_BUFFER 10
 #define TILE_EDGE 4
 
-// Game Dynamics
-#define STARTING_TILES 6
-#define GRACE_PERIOD 0
-#define SUGGEST_BUFFER 9
-
 // Animation
 #define UPWARD_SHIFT_DURATION 0.3
 #define DOWNWARD_SHIFT_DURATION 0.5
@@ -38,17 +33,6 @@
 #define NEGATIVE_COLOR 0x334D5C
 #define POSITIVE_COLOR 0xDF4949
 #define CONNECTOR_COLOR 0xEFC94C
-
-// Debugging and logging
-#define DEBUG 1
-#ifdef DEBUG
-#define DEBUG_LOG(s, ...)                                             \
-  NSLog(@"<%@:%d> %@",                                                \
-        [[NSString stringWithUTF8String:__FILE__] lastPathComponent], \
-        __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
-#else
-#define DEBUG_LOG(s, ...)
-#endif
 
 // Color from hex string
 #define UIColorFromRGB(rgbValue)                                       \

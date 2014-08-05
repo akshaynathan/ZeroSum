@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C148400199199E400C9EA28 /* ZSMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1483FF199199E400C9EA28 /* ZSMenuScene.m */; };
 		8C16407C195018F500536D05 /* ZSGod.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16407B195018F500536D05 /* ZSGod.m */; };
 		8C1640801952A8B400536D05 /* ZSGodTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C16407F1952A8B400536D05 /* ZSGodTest.m */; };
 		8C5667C7195A563600B3B975 /* ZSTileAdder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5667C6195A563600B3B975 /* ZSTileAdder.m */; };
@@ -51,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C1483FE199199E400C9EA28 /* ZSMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSMenuScene.h; sourceTree = "<group>"; };
+		8C1483FF199199E400C9EA28 /* ZSMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSMenuScene.m; sourceTree = "<group>"; };
 		8C16407A195018F500536D05 /* ZSGod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSGod.h; sourceTree = "<group>"; };
 		8C16407B195018F500536D05 /* ZSGod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSGod.m; sourceTree = "<group>"; };
 		8C16407F1952A8B400536D05 /* ZSGodTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSGodTest.m; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 				8CF8742A18EE3FF600E8473D /* ZSAppDelegate.m */,
 				8CF8742F18EE3FF600E8473D /* ZSViewController.h */,
 				8CF8743018EE3FF600E8473D /* ZSViewController.m */,
+				8C1483FE199199E400C9EA28 /* ZSMenuScene.h */,
+				8C1483FF199199E400C9EA28 /* ZSMenuScene.m */,
 				8CF8743218EE3FF600E8473D /* ZSGameScene.h */,
 				8CF8743318EE3FF600E8473D /* ZSGameScene.m */,
 				8C16407A195018F500536D05 /* ZSGod.h */,
@@ -321,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C148400199199E400C9EA28 /* ZSMenuScene.m in Sources */,
 				8C5667C7195A563600B3B975 /* ZSTileAdder.m in Sources */,
 				8C5667D1195A784F00B3B975 /* ZSLevelManager.m in Sources */,
 				8CF8742718EE3FF600E8473D /* main.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import "ZSViewController.h"
-#import "ZSGameScene.h"
+#import "ZSMenuScene.h"
 
 @implementation ZSViewController
 
@@ -18,7 +18,7 @@
   SKView *skView = (SKView *)self.view;
 
   // Create and configure the scene.
-  SKScene *scene = [ZSGameScene sceneWithSize:skView.bounds.size];
+  SKScene *scene = [ZSMenuScene sceneWithSize:skView.bounds.size];
   scene.scaleMode = SKSceneScaleModeAspectFill;
   scene.backgroundColor = [UIColor whiteColor];
 
