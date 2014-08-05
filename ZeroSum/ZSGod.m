@@ -26,13 +26,15 @@
 
 - (ZSGod *)initWithBoard:(ZSBoardNode *)board inScene:(ZSGameScene *)gamescene {
   if (self = [super init]) {
+    scene = gamescene;
+    chains = 0;
+    tileAdder = [[ZSTileAdder alloc] initWithGod:self];
+    currentLevel = 0;
+
     _gameboard = board;
     _chain = [[ZSChain alloc] init];
-    tileAdder = [[ZSTileAdder alloc] initWithGod:self];
-    scene = gamescene;
     _score = [[ZSScore alloc] init];
     _levelMan = [[ZSLevelManager alloc] init];
-    chains = 0;
   }
   return self;
 }
@@ -147,7 +149,6 @@
   // Add the real tile.
   [_gameboard addTile:ret atColumn:ret.column andRow:0];
 
-  // TODO: Add tests for this animation
   // Animate the new tile away
   [t runAction:[SKAction fadeOutWithDuration:NEW_TILE_FADE_DURATION]
       completion:^() {

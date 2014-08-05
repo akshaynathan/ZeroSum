@@ -53,9 +53,10 @@
  *  @param tile The tile to set position of.
  */
 - (CGPoint)getPositionForNewTile:(ZSNewTileNode *)tile {
-  return CGPointMake(tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE) / 2 +
-                         (TILE_SIZE - SQUARE_SIZE) / 2,
-                     -(SQUARE_SIZE + 4) - (BOARD_ROWS * TILE_SIZE) / 2);
+  return CGPointMake(
+      tile.column * TILE_SIZE - (BOARD_COLUMNS * TILE_SIZE) / 2 +
+          (TILE_SIZE - SQUARE_SIZE) / 2,
+      -(SQUARE_SIZE + NEW_TILE_BUFFER) - (BOARD_ROWS * TILE_SIZE) / 2);
 }
 
 /**

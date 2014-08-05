@@ -8,6 +8,8 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+#define NEW_TILE_BUFFER 4
+
 @class ZSTileNode;
 @class ZSNewTileNode;
 
