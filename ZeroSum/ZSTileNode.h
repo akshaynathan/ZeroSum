@@ -10,9 +10,9 @@
 #import "ZSBoardNode.h"
 
 // How deep into the node the connector goes
-#define CONNECTOR_BUFFER 8
+#define CONNECTOR_BUFFER 10
 // Width of connector line
-#define CONNECTOR_WIDTH 4
+#define CONNECTOR_WIDTH 5
 
 @interface ZSTileNode : SKSpriteNode
 
