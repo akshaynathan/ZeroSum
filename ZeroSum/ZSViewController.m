@@ -11,6 +11,13 @@
 
 @implementation ZSViewController
 
+// This is necessary to create an SKView instead of an UIView
+- (void)loadView {
+  CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame];
+  SKView *skView = [[SKView alloc] initWithFrame:applicationFrame];
+  self.view = skView;
+}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
 
