@@ -12,7 +12,7 @@
 #import "ZSGod.h"
 #import "ZSTileNode.h"
 #import "ZSNewTileNode.h"
-#import "ZSScore.h"
+#import "ZSScoreNode.h"
 
 @implementation ZSGameScene {
   ZSGod *god;
@@ -44,7 +44,7 @@
 
   ZSBoardNode *gameboard = [self createBoard];
   god = [[ZSGod alloc] initWithBoard:gameboard inScene:self];
-  ZSScore *score = god.score;
+  ZSScoreNode *score = god.score;
   score.position = CGPointMake(
       SCREEN_WIDTH / 2, BOTTOM_BUFFER + TILE_SIZE * BOARD_ROWS + SCORE_BUFFER);
   [rootNode addChild:score];

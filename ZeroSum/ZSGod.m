@@ -13,7 +13,7 @@
 #import "ZSChain.h"
 #import "ZSNewTileNode.h"
 #import "ZSTileAdder.h"
-#import "ZSScore.h"
+#import "ZSScoreNode.h"
 #import "ZSLevelManager.h"
 #import "ZSGameScene.h"
 
@@ -33,7 +33,7 @@
 
     _gameboard = board;
     _chain = [[ZSChain alloc] init];
-    _score = [[ZSScore alloc] init];
+    _score = [[ZSScoreNode alloc] init];
     _levelMan = [[ZSLevelManager alloc] init];
   }
   return self;
@@ -90,7 +90,7 @@
       length += 1;
     }
     chains++;
-    [_score addScore:[ZSScore calculateScoreForLevel:currentLevel
+    [_score addScore:[ZSScoreNode calculateScoreForLevel:currentLevel
                                       andChainLength:length]];
     [self updateLevel];
   } else {

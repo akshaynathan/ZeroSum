@@ -12,7 +12,7 @@
 #import "ZSTileNode.h"
 #import "ZSNewTileNode.h"
 #import "ZSChain.h"
-#import "ZSScore.h"
+#import "ZSScoreNode.h"
 
 @interface ZSGodTest : XCTestCase
 

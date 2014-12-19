@@ -7,13 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ZSScore.h"
+#import "ZSScoreNode.h"
 
-@interface ZSScoreTest : XCTestCase
+@interface ZSScoreNodeTest : XCTestCase
 
 @end
 
-@implementation ZSScoreTest
+@implementation ZSScoreNodeTest
 
 - (void)setUp {
   [super setUp];
@@ -24,7 +24,7 @@
 }
 
 - (void)testAddScore {
-  ZSScore *score = [[ZSScore alloc] init];
+  ZSScoreNode *score = [[ZSScoreNode alloc] init];
   XCTAssert(score.score == 0, "Score should be initialized to 0.");
   [score addScore:15];
   XCTAssert(score.score == 15, "addScore should update score.");

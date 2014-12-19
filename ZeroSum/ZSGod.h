@@ -16,7 +16,7 @@
 @class ZSBoardNode;
 @class ZSTileNode;
 @class ZSNewTileNode;
-@class ZSScore;
+@class ZSScoreNode;
 @class ZSLevelManager;
 @class ZSChain;
 @class ZSGameScene;
@@ -27,7 +27,7 @@ enum STATE { PAUSED, STOPPED, RUNNING };
 
 @property(atomic, readonly) ZSChain *chain;
 @property(atomic, readonly) ZSBoardNode *gameboard;
-@property(atomic, readonly) ZSScore *score;
+@property(atomic, readonly) ZSScoreNode *score;
 @property(atomic, readonly) ZSLevelManager *levelMan;
 @property(atomic, readonly) enum STATE state;
 
